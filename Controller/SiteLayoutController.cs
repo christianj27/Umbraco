@@ -14,6 +14,10 @@ namespace Umbraco.Controller
         {
             return PartialView(PARTIAL_VIEW_FOLDER + "_Header.cshtml");
         }
+        public ActionResult RenderHeadingPage()
+        {
+            return PartialView(PARTIAL_VIEW_FOLDER + "_HeadingPage.cshtml");
+        }
         public ActionResult RenderFooter()
         {
             return PartialView(PARTIAL_VIEW_FOLDER + "_Footer.cshtml");

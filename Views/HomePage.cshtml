@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+    Layout = "WebBase.cshtml";
+}
+
+<!-- Page Content -->
+
+@{ Html.RenderAction("RenderMainBanner", "HomePage"); }
+
+<section class="blog-posts">
+    <div class="container">
+        <div class="row">
+
+            @{ Html.RenderAction("RenderBlogPost", "HomePage"); }
+
+            @{ Html.RenderAction("RenderSideBar", "HomePage"); }
+
+        </div>
+    </div>
+</section>
+
+

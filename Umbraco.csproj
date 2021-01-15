@@ -441,6 +441,8 @@
   <ItemGroup>
     <Compile Include="Controller\HomePageController.cs" />
     <Compile Include="Controller\SiteLayoutController.cs" />
+    <Compile Include="Models\NavigationLink.cs" />
+    <Compile Include="Models\NavigationListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

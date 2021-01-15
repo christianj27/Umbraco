@@ -19,8 +19,8 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "50211e2aee1d7192")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "263e1c688279fa14")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.4")]
 
 namespace Umbraco.Web.PublishedModels
 {
@@ -955,7 +955,7 @@ namespace Umbraco.Web.PublishedModels
 
 	/// <summary>Blog Entries</summary>
 	[PublishedModel("blogEntries")]
-	public partial class BlogEntries : PublishedContentModel
+	public partial class BlogEntries : PublishedContentModel, IIntropageControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -977,6 +977,20 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Intro Page: Enter your introduction text for the page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("introPage")]
+		public string IntroPage => IntropageControls.GetIntroPage(this);
+
+		///<summary>
+		/// Title Page: Enter your tittle for the page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("titlePage")]
+		public string TitlePage => IntropageControls.GetTitlePage(this);
 	}
 
 	/// <summary>HomePage</summary>
@@ -1007,7 +1021,7 @@ namespace Umbraco.Web.PublishedModels
 
 	/// <summary>About</summary>
 	[PublishedModel("aboutUs")]
-	public partial class AboutUs : PublishedContentModel
+	public partial class AboutUs : PublishedContentModel, IIntropageControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -1029,11 +1043,25 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Intro Page: Enter your introduction text for the page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("introPage")]
+		public string IntroPage => IntropageControls.GetIntroPage(this);
+
+		///<summary>
+		/// Title Page: Enter your tittle for the page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("titlePage")]
+		public string TitlePage => IntropageControls.GetTitlePage(this);
 	}
 
 	/// <summary>ContactUs</summary>
 	[PublishedModel("contactUs")]
-	public partial class ContactUs : PublishedContentModel
+	public partial class ContactUs : PublishedContentModel, IIntropageControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -1055,6 +1083,81 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Intro Page: Enter your introduction text for the page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("introPage")]
+		public string IntroPage => IntropageControls.GetIntroPage(this);
+
+		///<summary>
+		/// Title Page: Enter your tittle for the page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("titlePage")]
+		public string TitlePage => IntropageControls.GetTitlePage(this);
+	}
+
+	// Mixin Content Type with alias "intropageControls"
+	/// <summary>Intro Page Controls</summary>
+	public partial interface IIntropageControls : IPublishedContent
+	{
+		/// <summary>Intro Page</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		string IntroPage { get; }
+
+		/// <summary>Title Page</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		string TitlePage { get; }
+	}
+
+	/// <summary>Intro Page Controls</summary>
+	[PublishedModel("intropageControls")]
+	public partial class IntropageControls : PublishedContentModel, IIntropageControls
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new const string ModelTypeAlias = "intropageControls";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<IntropageControls, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public IntropageControls(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Intro Page: Enter your introduction text for the page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("introPage")]
+		public string IntroPage => GetIntroPage(this);
+
+		/// <summary>Static getter for Intro Page</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public static string GetIntroPage(IIntropageControls that) => that.Value<string>("introPage");
+
+		///<summary>
+		/// Title Page: Enter your tittle for the page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("titlePage")]
+		public string TitlePage => GetTitlePage(this);
+
+		/// <summary>Static getter for Title Page</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public static string GetTitlePage(IIntropageControls that) => that.Value<string>("titlePage");
 	}
 
 	/// <summary>Folder</summary>

@@ -42,10 +42,11 @@ namespace Umbraco.Controller
         /// <returns>A List of NavigationListItems, representing the structure of the site.</returns>
         private List<NavigationListItem> GetNavigationModelFromDatabase()
         {
-            const int HOME_PAGE_POSITION_IN_PATH = 1;
-            int homePageId = int.Parse(CurrentPage.Path.Split(',')[HOME_PAGE_POSITION_IN_PATH]);
-            //IPublishedContent homePage = Model.Content.AncestorOrSelf(1).DescendantsOrSelf().Where(x => x.DocumentTypeAlias == HOME_PAGE_DOC_TYPE_ALIAS).FirstOrDefault();
-            IPublishedContent homePage = Umbraco.Content(homePageId);
+            //const int HOME_PAGE_POSITION_IN_PATH = 1;
+            //int homePageId = int.Parse(CurrentPage.Path.Split(',')[HOME_PAGE_POSITION_IN_PATH]);
+            //IPublishedContent homePage = Umbraco.Content(homePageId);
+
+            IPublishedContent homePage = CurrentPage.AncestorOrSelf(1).DescendantsOrSelf().Where(x => x.ContentType.Alias == "homepage").FirstOrDefault();
             List<NavigationListItem> nav = new List<NavigationListItem>();
             nav.Add(new NavigationListItem(new NavigationLink(homePage.Url, homePage.Name)));
             nav.AddRange(GetChildNavigationList(homePage));

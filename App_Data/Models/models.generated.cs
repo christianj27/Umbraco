@@ -19,7 +19,7 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "263e1c688279fa14")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "9bd2fe2af5c6af45")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.4")]
 
 namespace Umbraco.Web.PublishedModels
@@ -1021,7 +1021,7 @@ namespace Umbraco.Web.PublishedModels
 
 	/// <summary>About</summary>
 	[PublishedModel("aboutUs")]
-	public partial class AboutUs : PublishedContentModel, IIntropageControls
+	public partial class AboutUs : PublishedContentModel, IBasicContentControls, IIntropageControls, ITopNavigationControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -1045,6 +1045,13 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
+		/// Content Grid: Enter the content for the grid
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("contentGrid")]
+		public Newtonsoft.Json.Linq.JToken ContentGrid => BasicContentControls.GetContentGrid(this);
+
+		///<summary>
 		/// Intro Page: Enter your introduction text for the page
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
@@ -1057,6 +1064,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("titlePage")]
 		public string TitlePage => IntropageControls.GetTitlePage(this);
+
+		///<summary>
+		/// Exclude From Top Navigation: Tick this if you don't want this page appear in the top navigation
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("excludeFromTopNavigation")]
+		public bool ExcludeFromTopNavigation => TopNavigationControls.GetExcludeFromTopNavigation(this);
 	}
 
 	/// <summary>ContactUs</summary>
@@ -1158,6 +1172,98 @@ namespace Umbraco.Web.PublishedModels
 		/// <summary>Static getter for Title Page</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		public static string GetTitlePage(IIntropageControls that) => that.Value<string>("titlePage");
+	}
+
+	// Mixin Content Type with alias "basicContentControls"
+	/// <summary>Basic Content Controls</summary>
+	public partial interface IBasicContentControls : IPublishedContent
+	{
+		/// <summary>Content Grid</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		Newtonsoft.Json.Linq.JToken ContentGrid { get; }
+	}
+
+	/// <summary>Basic Content Controls</summary>
+	[PublishedModel("basicContentControls")]
+	public partial class BasicContentControls : PublishedContentModel, IBasicContentControls
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new const string ModelTypeAlias = "basicContentControls";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<BasicContentControls, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public BasicContentControls(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Content Grid: Enter the content for the grid
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("contentGrid")]
+		public Newtonsoft.Json.Linq.JToken ContentGrid => GetContentGrid(this);
+
+		/// <summary>Static getter for Content Grid</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public static Newtonsoft.Json.Linq.JToken GetContentGrid(IBasicContentControls that) => that.Value<Newtonsoft.Json.Linq.JToken>("contentGrid");
+	}
+
+	// Mixin Content Type with alias "topNavigationControls"
+	/// <summary>Top Navigation Controls</summary>
+	public partial interface ITopNavigationControls : IPublishedContent
+	{
+		/// <summary>Exclude From Top Navigation</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		bool ExcludeFromTopNavigation { get; }
+	}
+
+	/// <summary>Top Navigation Controls</summary>
+	[PublishedModel("topNavigationControls")]
+	public partial class TopNavigationControls : PublishedContentModel, ITopNavigationControls
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new const string ModelTypeAlias = "topNavigationControls";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TopNavigationControls, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public TopNavigationControls(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Exclude From Top Navigation: Tick this if you don't want this page appear in the top navigation
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("excludeFromTopNavigation")]
+		public bool ExcludeFromTopNavigation => GetExcludeFromTopNavigation(this);
+
+		/// <summary>Static getter for Exclude From Top Navigation</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public static bool GetExcludeFromTopNavigation(ITopNavigationControls that) => that.Value<bool>("excludeFromTopNavigation");
 	}
 
 	/// <summary>Folder</summary>

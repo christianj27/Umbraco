@@ -55,7 +55,7 @@ namespace Umbraco.Controller
         private List<NavigationListItem> GetChildNavigationList(IPublishedContent page)
         {
             List<NavigationListItem> listItems = null;
-            var childPages = page.Children.Where(x => x.IsVisible());
+            var childPages = page.Children.Where(x => x.IsVisible()).Where(x => !x.HasValue("excludeFromTopNavigation") || (x.HasValue("excludeFromTopNavigation") && !x.Value<bool>("excludeFromTopNavigation")));
             if (childPages != null && childPages.Any() && childPages.Count() > 0)
             {
                 listItems = new List<NavigationListItem>();

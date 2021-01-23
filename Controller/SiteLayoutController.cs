@@ -31,7 +31,7 @@ namespace Umbraco.Controller
         public ActionResult RenderHeader()
         {
             //List<NavigationListItem> nav = GetNavigationModelFromDatabase(); //Make the Navigation Pege Dynamically From Database
-            List<NavigationListItem> nav = GetObjectFromCache<List<NavigationListItem>>("mainNav", 5, GetNavigationModelFromDatabase); //Make the Navigation Pege Dynamically From Cache
+            List<NavigationListItem> nav = GetObjectFromCache<List<NavigationListItem>>("mainNav", 0, GetNavigationModelFromDatabase); //Make the Navigation Pege Dynamically From Cache
             return PartialView(PARTIAL_VIEW_FOLDER + "_Header.cshtml", nav);
 
         }
@@ -55,7 +55,7 @@ namespace Umbraco.Controller
         private List<NavigationListItem> GetChildNavigationList(IPublishedContent page)
         {
             List<NavigationListItem> listItems = null;
-            var childPages = page.Children.Where(x => x.IsVisible()).Where(x => !x.HasValue("excludeFromTopNavigation") || (x.HasValue("excludeFromTopNavigation") && !x.Value<bool>("excludeFromTopNavigation")));
+            var childPages = page.Children.Where(x => x.IsVisible()).Where(x => x.Level <= 2).Where(x => !x.HasValue("excludeFromTopNavigation") || (x.HasValue("excludeFromTopNavigation") && !x.Value<bool>("excludeFromTopNavigation")));
             if (childPages != null && childPages.Any() && childPages.Count() > 0)
             {
                 listItems = new List<NavigationListItem>();

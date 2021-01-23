@@ -1,0 +1,238 @@
+﻿@*@model List<BlogPreview>*@
+@inherits UmbracoViewPage
+@*@using Umbraco.Models*@
+
+
+<!--RenderBlogPreview(Model)
+
+helper RenderBlogPreview(List<BlogPreview> item)
+{
+    foreach (var article in item)
+    {
+        <div class="col-lg-6">
+            <div class="blog-post">
+                <div class="blog-thumb">
+                    <a href="article.LinkUrl"><img src="article.ImageUrl" alt="article.Name"></a>
+                </div>
+                <div class="down-content">
+                    <span>Lifestyle</span>
+                    <a href="article.LinkUrl"><h4>article.Name</h4></a>
+                    <ul class="post-info">
+                        <li><a href="#">article.Creator</a></li>
+                        <li><a href="#">article.PublishedDate</a></li>-->
+@*<li><a href="#">12 Comments</a></li>*@
+<!--</ul>
+                <p>article.Instroduction</p>
+                <div class="post-options">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="post-tags">
+                                <li><i class="fa fa-tags"></i></li>
+                                <li><a href="#">Best Templates</a>,</li>
+                                <li><a href="#">TemplateMo</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}-->
+
+@{
+    var blogPage = Model.Root().Descendants().Where(x => x.ContentType.Alias == "blogEntries").FirstOrDefault();
+    //var bgImage = Umbraco.Media(blogPage.Id);
+}
+
+@if (blogPage != null)
+{
+    foreach (var article in blogPage.Children.OrderByDescending(x => x.UpdateDate).Take(3))
+    {
+        <div class="col-lg-6">
+            <div class="blog-post">
+                <div class="blog-thumb">
+                    <a href="@article.Url"><img src="@article.Url" alt="@article.Name"></a>
+                </div>
+                <div class="down-content">
+                    <span>Lifestyle</span>
+                    <a href="article.LinkUrl"><h4>@article.Name</h4></a>
+                    <ul class="post-info">
+                        <li><a href="#">@article.CreatorName</a></li>
+                        <li><a href="#">@article.CreateDate.ToString("MMMM dd, yyyy")</a></li>-->
+                        @*<li><a href="#">12 Comments</a></li>*@
+                    </ul>
+                    <p>@article.Value("ArticleIntro")</p>
+                    <div class="post-options">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="post-tags">
+                                    <li><i class="fa fa-tags"></i></li>
+                                    <li><a href="#">Best Templates</a>,</li>
+                                    <li><a href="#">TemplateMo</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@*<div class="col-lg-12">
+        <ul class="page-numbers">
+            <li><a href="#">1</a></li>
+            <li class="active"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+        </ul>
+    </div>
+
+    @{
+        <div class="col-lg-12">
+
+            if (totalPages > 1)
+            {
+                <div class="pagination">
+                    <ul>
+                        @if (page > 1)
+                        {
+                            <li><a href="?page=@(page-1)">Prev</a></li>
+                        }
+                        @for (int p = 1; p < totalPages + 1; p++)
+                        {
+                            <li class="@(p == page ? "active" : string.Empty)">
+                                <a href="?page=@p">@p</a>
+                            </li>
+                        }
+                        @if (page < totalPages)
+                        {
+                            <li><a href="?page=@(page+1)">Next</a></li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>*@
+@*}*@
+
+}
+<!--<div class="articles-list mb-5">
+
+                <div class="row">
+                    {
+                        int pageSize = 2; // How many items per page
+                        int page; // The page we are viewing
+
+                        /* Set up parameters */
+                        if (!int.TryParse(Request.QueryString["page"], out page))
+                        {
+                            page = 1;
+                        }
+
+                        /* This is your basic query to select the nodes you want */
+                        int totalNodes = selection.Count();
+                        int totalPages = (int)Math.Ceiling((double)totalNodes / (double)pageSize);
+
+                        /* Bounds checking */
+                        if (page > totalPages)
+                        {
+                            page = totalPages;
+                        }
+                        else if (page < 1)
+                        {
+                            page = 1;
+                        }
+                    }
+
+                    foreach (var item in selection.Skip((page - 1) * pageSize).Take(pageSize))
+                    {
+                        i++;
+                        k++;
+                        string imageUrl = item.GetPropertyValue<IPublishedContent>("articleImage").Url;
+                        IPublishedContent author = item.GetPropertyValue<IPublishedContent>("author");
+                        ArchetypeModel video = item.GetPropertyValue<ArchetypeModel>("video");
+                        var date = item.GetPropertyValue<DateTime>("publishDate");
+                        {
+                            <div class="col-lg-3 col-md-4 col-sm-6 wow fadeIn">
+                                <div class="caption-container mb-4">
+                                    <a href="item.Url">
+                                        <div class="caption"
+                                             style="background: url(imageUrl) no-repeat left top / cover;">
+                                            {
+                                                foreach (ArchetypeFieldsetModel fieldset in video)
+                                                {
+                                                    if (fieldset.GetValue("webM") != null |
+                                                        fieldset.GetValue("mp4") != null |
+                                                        fieldset.GetValue("videoPoster") != null)
+                                                    {
+                                                        <div class="">
+                                                            <img src="~/images/elements/icon-video.png" alt="Play icon" class="icon-video">
+                                                        </div>
+                                                    }
+                                                }
+                                            }
+                                            <div class="caption-info"></div>
+                                        </div>
+                                    </a>
+                                    <div class="caption-info">
+                                        <p class="title">
+                                            <a href="item.Url" class="">item.Name</a>
+                                        </p>
+                                        <p class="description">
+                                            item.GetPropertyValue("articleIntro")
+                                            <a href="item.Url"> Read more</a>
+                                        </p>
+                                        <p class="post-info">
+                                            {
+                                                if (author != null)
+                                                {
+                                                   date.ToString("MM.yyyy") :| author.Name
+                                                }
+                                                else
+                                                {
+                                                    date.ToString("MM.yyyy") :| Staff Writer
+                                                }
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+                {
+                    if (totalPages > 1)
+                    {
+<!-- Pagination -->
+<!--<nav aria-label="Bottom page navigation">
+            <ul class="pagination justify-content-center">
+                if (page > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="?page=(page-1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                }
+                for (int p = 1; p < totalPages + 1; p++)
+                {
+                    <li class="page-item (p == page ? "active" : string.Empty)">
+                        <a class="page-link" href="?page=p">p</a>
+                    </li>
+                }
+                if (page < totalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="?page=(page+1)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+}-->
+<!--</div>-->

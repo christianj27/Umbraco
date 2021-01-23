@@ -439,8 +439,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\BlogController.cs" />
     <Compile Include="Controller\HomePageController.cs" />
     <Compile Include="Controller\SiteLayoutController.cs" />
+    <Compile Include="Helpers\QueryStringHelper.cs" />
+    <Compile Include="Models\BlogPreview.cs" />
     <Compile Include="Models\NavigationLink.cs" />
     <Compile Include="Models\NavigationListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -479,6 +482,8 @@
     <Content Include="Views\BlogEntries.cshtml" />
     <Content Include="Views\AboutUs.cshtml" />
     <Content Include="Views\ContactUs.cshtml" />
+    <Content Include="Views\Partials\Blog\_PostList.cshtml" />
+    <Content Include="Views\Blogpost.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

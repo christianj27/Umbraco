@@ -3,6 +3,11 @@
     Layout = "WebBase.cshtml";
 }
 
+@{
+    var blogPage = Model.Root().Descendants().Where(x => x.ContentType.Alias == "blogEntries").FirstOrDefault();
+}
+
+
 <!-- Page Content -->
 
 @{ Html.RenderAction("RenderMainBanner", "HomePage"); }
@@ -10,8 +15,49 @@
 <section class="blog-posts">
     <div class="container">
         <div class="row">
-
-            @{ Html.RenderAction("RenderBlogPost", "HomePage"); }
+            <div class="col-lg-8">
+                <div class="all-blog-posts">
+                    <div class="row">
+                        @*@{ Html.RenderAction("RenderBlogPost", "HomePage", new { numberOfItems = 4 }); }*@
+                        @*@{ Html.Partial("~/Views/Partials/Blog/_PostList.cshtml"); }*@
+                        @if (blogPage != null)
+                        {
+                            foreach (var article in blogPage.Children.OrderByDescending(x => x.UpdateDate).Take(3))
+                            {
+                                var bgImage = article.Value<IPublishedContent>("ArticleImage");
+                                <div class="col-lg-12">
+                                    <div class="blog-post">
+                                        <div class="blog-thumb">
+                                            <a href="@article.Url"><img src="@bgImage.Url" alt="@article.Name"></a>
+                                        </div>
+                                        <div class="down-content">
+                                            <span>Lifestyle</span>
+                                            <a href="article.LinkUrl"><h4>@article.Name</h4></a>
+                                            <ul class="post-info">
+                                                <li><a href="#">@article.CreatorName</a></li>
+                                                <li><a href="#">@article.CreateDate.ToString("MMMM dd, yyyy")</a></li>-->
+                                                @*<li><a href="#">12 Comments</a></li>*@
+                                            </ul>
+                                            <p>@article.Value("ArticleIntro")</p>
+                                            <div class="post-options">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <ul class="post-tags">
+                                                            <li><i class="fa fa-tags"></i></li>
+                                                            <li><a href="#">Best Templates</a>,</li>
+                                                            <li><a href="#">TemplateMo</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
 
             @{ Html.RenderAction("RenderSideBar", "HomePage"); }
 

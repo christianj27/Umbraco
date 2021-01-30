@@ -309,7 +309,10 @@ Umbraco.ModelsBuilder.Umbraco.ModelsBuilderComposer, Umbraco.ModelsBuilder, Vers
 Umbraco.ModelsBuilder.Umbraco.ModelsBuilderBackOfficeController, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.BlogController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.HomePageController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Controller.SearchPageController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.SiteLayoutController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Controller.Surface.SearchSurfaceController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Composing.RegisterServiceComposer, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.Composing.IComposer
 
@@ -342,6 +345,7 @@ Umbraco.Web.Compose.NestedContentPropertyComposer, Umbraco.Web, Version=8.0.0.0,
 Umbraco.Web.Compose.DatabaseServerRegistrarAndMessengerComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Cache.DistributedCacheBinderComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Umbraco.ModelsBuilderComposer, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Composing.RegisterServiceComposer, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.PropertyEditors.IPropertyValueConverter
 
@@ -389,10 +393,12 @@ Umbraco.Web.Controllers.UmbLoginController, Umbraco.Web, Version=8.0.0.0, Cultur
 Umbraco.Controller.BlogController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.HomePageController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.SiteLayoutController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Controller.Surface.SearchSurfaceController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.Mvc.IRenderMvcController
 
 Umbraco.Web.Mvc.RenderMvcController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Controller.SearchPageController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.WebApi.UmbracoApiController
 
@@ -481,6 +487,7 @@ Umbraco.Web.Controllers.UmbLoginController, Umbraco.Web, Version=8.0.0.0, Cultur
 Umbraco.Controller.BlogController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.HomePageController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.SiteLayoutController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Controller.Surface.SearchSurfaceController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.Dashboards.IDashboard
 
@@ -624,6 +631,12 @@ Umbraco.Web.HealthCheck.Checks.Data.DatabaseIntegrityCheck, Umbraco.Web, Version
 Umbraco.Web.HealthCheck.NotificationMethods.IHealthCheckNotificationMethod
 
 Umbraco.Web.HealthCheck.NotificationMethods.EmailNotificationMethod, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+
+Umbraco.Core.Models.PublishedContent.PublishedElementModel
+
+
+Umbraco.Core.Models.PublishedContent.PublishedContentModel
+
 
 Umbraco.Core.Deploy.IServiceConnector
 

@@ -19,7 +19,7 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "882a7b35ad8d0932")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "ba99ea5e8d4cc10c")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 namespace Umbraco.Web.PublishedModels
@@ -955,7 +955,7 @@ namespace Umbraco.Web.PublishedModels
 
 	/// <summary>Blog Entries</summary>
 	[PublishedModel("blogEntries")]
-	public partial class BlogEntries : PublishedContentModel, IIntropageControls
+	public partial class BlogEntries : PublishedContentModel, IContentControl, IIntropageControls, ITopNavigationControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -979,6 +979,13 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
+		/// Total Post Should be Shown: How many posts should be shown?
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("totalPostShouldBeShown")]
+		public int TotalPostShouldBeShown => ContentControl.GetTotalPostShouldBeShown(this);
+
+		///<summary>
 		/// Intro Page: Enter your introduction text for the page
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
@@ -991,6 +998,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("titlePage")]
 		public string TitlePage => IntropageControls.GetTitlePage(this);
+
+		///<summary>
+		/// Exclude From Top Navigation: Tick this if you don't want this page appear in the top navigation
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("excludeFromTopNavigation")]
+		public bool ExcludeFromTopNavigation => TopNavigationControls.GetExcludeFromTopNavigation(this);
 	}
 
 	/// <summary>HomePage</summary>
@@ -1221,7 +1235,7 @@ namespace Umbraco.Web.PublishedModels
 	}
 
 	// Mixin Content Type with alias "topNavigationControls"
-	/// <summary>Top Navigation Controls</summary>
+	/// <summary>Top Navigation Control</summary>
 	public partial interface ITopNavigationControls : IPublishedContent
 	{
 		/// <summary>Exclude From Top Navigation</summary>
@@ -1229,7 +1243,7 @@ namespace Umbraco.Web.PublishedModels
 		bool ExcludeFromTopNavigation { get; }
 	}
 
-	/// <summary>Top Navigation Controls</summary>
+	/// <summary>Top Navigation Control</summary>
 	[PublishedModel("topNavigationControls")]
 	public partial class TopNavigationControls : PublishedContentModel, ITopNavigationControls
 	{
@@ -1408,6 +1422,85 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("titlePage")]
 		public string TitlePage => IntropageControls.GetTitlePage(this);
+	}
+
+	// Mixin Content Type with alias "contentControl"
+	/// <summary>Content Control</summary>
+	public partial interface IContentControl : IPublishedContent
+	{
+		/// <summary>Total Post Should be Shown</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		int TotalPostShouldBeShown { get; }
+	}
+
+	/// <summary>Content Control</summary>
+	[PublishedModel("contentControl")]
+	public partial class ContentControl : PublishedContentModel, IContentControl
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new const string ModelTypeAlias = "contentControl";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ContentControl, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public ContentControl(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Total Post Should be Shown: How many posts should be shown?
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("totalPostShouldBeShown")]
+		public int TotalPostShouldBeShown => GetTotalPostShouldBeShown(this);
+
+		/// <summary>Static getter for Total Post Should be Shown</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public static int GetTotalPostShouldBeShown(IContentControl that) => that.Value<int>("totalPostShouldBeShown");
+	}
+
+	/// <summary>Search Page</summary>
+	[PublishedModel("searchPage")]
+	public partial class SearchPage : PublishedContentModel, ITopNavigationControls
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new const string ModelTypeAlias = "searchPage";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<SearchPage, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public SearchPage(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Exclude From Top Navigation: Tick this if you don't want this page appear in the top navigation
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("excludeFromTopNavigation")]
+		public bool ExcludeFromTopNavigation => TopNavigationControls.GetExcludeFromTopNavigation(this);
 	}
 
 	/// <summary>Folder</summary>

@@ -3031,13 +3031,22 @@ Use this directive to render a group of toggle buttons.
                     syncTreeNode($scope.content, data.path, false, args.reloadChildren);
                     eventsService.emit('content.saved', {
                         content: $scope.content,
-                        action: args.action
+                        action: args.action,
+                        valid: true
                     });
                     resetNestedFieldValiation(fieldsToRollback);
                     ensureDirtyIsSetIfAnyVariantIsDirty();
                     return $q.when(data);
                 }, function (err) {
                     syncTreeNode($scope.content, $scope.content.path);
+                    if (err.status === 400 && err.data) {
+                        // content was saved but is invalid.
+                        eventsService.emit('content.saved', {
+                            content: $scope.content,
+                            action: args.action,
+                            valid: false
+                        });
+                    }
                     resetNestedFieldValiation(fieldsToRollback);
                     return $q.reject(err);
                 });
@@ -6837,18 +6846,14 @@ Use this directive to prevent default action of an element. Effectively implemen
                     element.trigger('focus');
                 }
             };
-            //check if there's a value for the attribute, if there is and it's false then we conditionally don't
-            //use auto focus.
-            if (attrs.umbAutoFocus) {
-                attrs.$observe('umbAutoFocus', function (newVal) {
-                    var enabled = newVal === 'false' || newVal === 0 || newVal === false ? false : true;
-                    if (enabled) {
-                        $timeout(function () {
-                            update();
-                        });
-                    }
-                });
-            }
+            attrs.$observe('umbAutoFocus', function (newVal) {
+                var enabled = newVal === 'false' || newVal === 0 || newVal === false ? false : true;
+                if (enabled) {
+                    $timeout(function () {
+                        update();
+                    });
+                }
+            });
         };
     });
     'use strict';
@@ -7114,7 +7119,7 @@ Use this directive to prevent default action of an element. Effectively implemen
 **/
     (function () {
         'use strict';
-        function UmbRadiobuttonController($timeout) {
+        function UmbRadiobuttonController($timeout, localizationService) {
             var vm = this;
             vm.$onInit = onInit;
             vm.change = change;
@@ -15212,7 +15217,7 @@ Use this directive to generate a thumbnail grid of media items.
             var directive = {
                 restrict: 'E',
                 replace: true,
-                template: '<div class="umb-node-preview" ng-class="{\'umb-node-preview--sortable\': sortable, \'umb-node-preview--unpublished\': published === false }"> <div class="flex">  <umb-icon ng-if="icon" icon="{{icon}}" class="umb-node-preview__icon"></umb-icon> <div class="umb-node-preview__content"> <div class="umb-node-preview__name" ng-attr-title="{{nodeNameTitle}}">{{name}}</div> <div class="umb-node-preview__description" ng-if="description">{{description}}</div> <div class="umb-user-group-preview__permissions" ng-if="permissions"> <span> <span class="bold"><localize key="general_rights">Permissions</localize>:</span> <span ng-repeat="permission in permissions" class="umb-user-group-preview__permission">{{permission.name}}</span> </span> </div> </div> </div> <div class="umb-node-preview__actions">  <a class="umb-node-preview__action" title="Edit {{name}}" ng-href="{{editUrl}}" ng-if="allowEdit && editUrl" ng-click="onEdit()"> <localize key="general_edit">Edit</localize> <span class="sr-only">{{name}}</span> </a> <button type="button" class="umb-node-preview__action" title="Edit {{name}}" ng-if="allowEdit && !editUrl" ng-click="onEdit()"> <localize key="general_edit">Edit</localize> <span class="sr-only">{{name}}...</span> </button>  <a class="umb-node-preview__action" title="Open {{name}}" ng-href="{{openUrl}}" ng-if="allowOpen && openUrl" ng-click="onOpen()"> <localize key="general_open">Open</localize> <span class="sr-only">{{name}}</span> </a> <button type="button" class="umb-node-preview__action" title="Open {{name}}" ng-if="allowOpen && !openUrl" ng-click="onOpen()"> <localize key="general_open">Open</localize> <span class="sr-only">{{name}}...</span> </button>  <a class="umb-node-preview__action umb-node-preview__action--red" title="Remove {{name}}" ng-href="{{removeUrl}}" ng-if="allowRemove && removeUrl" ng-click="onRemove()"> <localize key="general_remove">Remove</localize> <span class="sr-only">{{name}}</span> </a> <button type="button" class="umb-node-preview__action umb-node-preview__action--red" title="Remove {{name}}" ng-if="allowRemove && !removeUrl" ng-click="onRemove()"> <localize key="general_remove">Remove</localize> <span class="sr-only">{{name}}</span> </button> </div> </div> ',
+                template: '<div class="umb-node-preview" ng-class="{\'umb-node-preview--sortable\': sortable, \'umb-node-preview--unpublished\': published === false }"> <div class="flex">  <umb-icon ng-if="icon" icon="{{icon}}" class="umb-node-preview__icon {{icon}}"></umb-icon> <div class="umb-node-preview__content"> <div class="umb-node-preview__name" ng-attr-title="{{nodeNameTitle}}">{{name}}</div> <div class="umb-node-preview__description" ng-if="description">{{description}}</div> <div class="umb-user-group-preview__permissions" ng-if="permissions"> <span> <span class="bold"><localize key="general_rights">Permissions</localize>:</span> <span ng-repeat="permission in permissions" class="umb-user-group-preview__permission">{{permission.name}}</span> </span> </div> </div> </div> <div class="umb-node-preview__actions">  <a class="umb-node-preview__action" title="Edit {{name}}" ng-href="{{editUrl}}" ng-if="allowEdit && editUrl" ng-click="onEdit()"> <localize key="general_edit">Edit</localize> <span class="sr-only">{{name}}</span> </a> <button type="button" class="umb-node-preview__action" title="Edit {{name}}" ng-if="allowEdit && !editUrl" ng-click="onEdit()"> <localize key="general_edit">Edit</localize> <span class="sr-only">{{name}}...</span> </button>  <a class="umb-node-preview__action" title="Open {{name}}" ng-href="{{openUrl}}" ng-if="allowOpen && openUrl" ng-click="onOpen()"> <localize key="general_open">Open</localize> <span class="sr-only">{{name}}</span> </a> <button type="button" class="umb-node-preview__action" title="Open {{name}}" ng-if="allowOpen && !openUrl" ng-click="onOpen()"> <localize key="general_open">Open</localize> <span class="sr-only">{{name}}...</span> </button>  <a class="umb-node-preview__action umb-node-preview__action--red" title="Remove {{name}}" ng-href="{{removeUrl}}" ng-if="allowRemove && removeUrl" ng-click="onRemove()"> <localize key="general_remove">Remove</localize> <span class="sr-only">{{name}}</span> </a> <button type="button" class="umb-node-preview__action umb-node-preview__action--red" title="Remove {{name}}" ng-if="allowRemove && !removeUrl" ng-click="onRemove()"> <localize key="general_remove">Remove</localize> <span class="sr-only">{{name}}</span> </button> </div> </div> ',
                 scope: {
                     icon: '=?',
                     name: '=',

@@ -1,0 +1,162 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<SearchContentModels>
+@using Umbraco.Models;
+@using Umbraco.Models.ViewModels;
+@*@inherits Umbraco.Web.Mvc.UmbracoViewPage*@
+
+@{
+    Layout = "WebBase.cshtml";
+}
+
+@*@{ Html.RenderAction("RenderHeadingPage", "SiteLayout"); }*@
+
+<div class="heading-page header-text">
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="main-content">
+                        <div class="row">
+                            @Html.Partial("Partials/HomePage/_SearchForm", Model.SearchViewModel)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@*<p>Your Search for <strong>@Model.SearchViewModel.Query</strong> returned these results:</p>
+
+@if (Model.SearchResults != null && Model.SearchResults.Any())
+{
+    foreach (var item in Model.SearchResults)
+    {
+        <p><a href="@item.Url()">@item.Name</a></p>
+    }
+}*@
+<section class="blog-posts grid-system">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="all-blog-posts">
+                    <div class="row">
+                        @if (Model.SearchResults != null && Model.SearchResults.Any())
+                        {
+                            foreach (var article in Model.SearchResults)
+                            {
+                                var bgImage = article.Value<IPublishedContent>("articleImage");
+                                <div class="col-lg-6">
+                                    <div class="blog-post">
+                                        <div class="blog-thumb">
+                                            <a href="@article.Url"><img src="@bgImage.Url" alt="@article.Value("articleTitle")"></a>
+                                        </div>
+                                        <div class="down-content">
+                                            <span>Lifestyle</span>
+                                            <a href="@article.Url"><h4>@article.Value("articleTitle")</h4></a>
+                                            <ul class="post-info">
+                                                <li><a href="#">@article.CreatorName</a></li>
+                                                <li><a href="#">@article.CreateDate.ToString("MMMM dd, yyyy")</a></li>
+                                                @*<li><a href="#">12 Comments</a></li>*@
+                                            </ul>
+                                            <p>@article.Value("articleIntro")</p>
+                                            <div class="post-options">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <ul class="post-tags">
+                                                            <li><i class="fa fa-tags"></i></li>
+                                                            <li><a href="#">Best Templates</a>,</li>
+                                                            <li><a href="#">TemplateMo</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        <!--Pagination-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sidebar-item search">
+                                <form id="search_form" name="gs" method="GET" action="#">
+                                    <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item recent-posts">
+                                <div class="sidebar-heading">
+                                    <h2>Recent Posts</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li>
+                                            <a href="post-details.html">
+                                                <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
+                                                <span>May 31, 2020</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="post-details.html">
+                                                <h5>Suspendisse et metus nec libero ultrices varius eget in risus</h5>
+                                                <span>May 28, 2020</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="post-details.html">
+                                                <h5>Swag hella echo park leggings, shaman cornhole ethical coloring</h5>
+                                                <span>May 14, 2020</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item categories">
+                                <div class="sidebar-heading">
+                                    <h2>Categories</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><a href="#">- Nature Lifestyle</a></li>
+                                        <li><a href="#">- Awesome Layouts</a></li>
+                                        <li><a href="#">- Creative Ideas</a></li>
+                                        <li><a href="#">- Responsive Templates</a></li>
+                                        <li><a href="#">- HTML5 / CSS3 Templates</a></li>
+                                        <li><a href="#">- Creative &amp; Unique</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item tags">
+                                <div class="sidebar-heading">
+                                    <h2>Tag Clouds</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><a href="#">Lifestyle</a></li>
+                                        <li><a href="#">Creative</a></li>
+                                        <li><a href="#">HTML5</a></li>
+                                        <li><a href="#">Inspiration</a></li>
+                                        <li><a href="#">Motivation</a></li>
+                                        <li><a href="#">PSD</a></li>
+                                        <li><a href="#">Responsive</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

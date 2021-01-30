@@ -6,12 +6,10 @@
     var blogPage = Model.Root().Descendants().Where(x => x.ContentType.Alias == "blogEntries").FirstOrDefault();
 
     var pageNumber = 1; int.TryParse(Request.QueryString["page"], out pageNumber);
-    var pageSize = QueryStringHelper.GetIntFromQueryString(Request, "size", 6);
-
+    var pageSize = QueryStringHelper.GetIntFromQueryString(Request, "size", Convert.ToInt32(Model.Value("totalPostShouldBeShown")));
     var pageOfArticles = blogPage.Children.OrderByDescending(x => x.UpdateDate).Skip((pageNumber - 1) * pageSize).Take(pageSize);
 
     var totalItemCount = blogPage.Children.Count();
-
     var pageCount = totalItemCount > 0 ? Math.Ceiling((double)totalItemCount / pageSize) : 1;
 
     if (pageNumber > pageCount)
@@ -22,15 +20,11 @@
     {
         pageNumber = 1;
     }
-
 }
 
 <!-- Page Content -->
 <!-- Banner Starts Here -->
-
 @{ Html.RenderAction("RenderHeadingPage", "SiteLayout"); }
-
-
 <!-- Banner Ends Here -->
 
 <section class="blog-posts grid-system">
@@ -41,25 +35,26 @@
                     <div class="row">
                         @*@{ Html.RenderAction("RenderPostList", "Blog", new { numberOfItems = 6 }); }*@
                         @*@{ Html.Partial("~/Views/Partials/Blog/_PostList.cshtml"); }*@
+                        <!--Content-->
                         @if (blogPage != null)
                         {
                             foreach (var article in pageOfArticles)
                             {
-                                var bgImage = article.Value<IPublishedContent>("ArticleImage");
+                                var bgImage = article.Value<IPublishedContent>("articleImage");
                                 <div class="col-lg-6">
                                     <div class="blog-post">
                                         <div class="blog-thumb">
-                                            <a href="@article.Url"><img src="@bgImage.Url" alt="@article.Name"></a>
+                                            <a href="@article.Url"><img src="@bgImage.Url" alt="@article.Value("articleTitle")"></a>
                                         </div>
                                         <div class="down-content">
                                             <span>Lifestyle</span>
-                                            <a href="article.LinkUrl"><h4>@article.Name</h4></a>
+                                            <a href="@article.Url"><h4>@article.Value("articleTitle")</h4></a>
                                             <ul class="post-info">
                                                 <li><a href="#">@article.CreatorName</a></li>
-                                                <li><a href="#">@article.CreateDate.ToString("MMMM dd, yyyy")</a></li>-->
+                                                <li><a href="#">@article.CreateDate.ToString("MMMM dd, yyyy")</a></li>
                                                 @*<li><a href="#">12 Comments</a></li>*@
                                             </ul>
-                                            <p>@article.Value("ArticleIntro")</p>
+                                            <p>@article.Value("articleIntro")</p>
                                             <div class="post-options">
                                                 <div class="row">
                                                     <div class="col-lg-12">
@@ -77,7 +72,7 @@
                             }
                         }
                         <!--Pagination-->
-                        <div class="col-lg-12"">
+                        <div class="col-lg-12" ">
                             <ul class="page-numbers">
                                 @if (blogPage != null)
                                 {
@@ -87,7 +82,7 @@
                                         {
                                             <li><a href="@($"{blogPage.Url}?page={pageNumber - 1}")"><i class="fa fa-angle-double-left"></i></a></li>
                                         }
-                                        for (int p = 1; p < pageCount + 1; p++)
+                                        for (int p = Math.Max(1, pageNumber - 2); p <= Math.Min(pageNumber + 2, pageCount); p++) //Function Max and min use for limit showed number in pagination
                                         {
                                             <li class="@(p == pageNumber? "active" : string.Empty)">
                                                 <a href="@($"{blogPage.Url}?page={p}")">@p</a>
@@ -96,7 +91,7 @@
                                         @*<div class="paging-block text-center">
                                             <span>Page @pageNumber of @pageCount</span>
                                         </div>*@
-                                        if (pageNumber > 0)
+                                        if (pageNumber < pageCount)
                                         {
                                             <li><a href="@($"{blogPage.Url}?page={pageNumber + 1}")"><i class="fa fa-angle-double-right"></i></a></li>
                                         }

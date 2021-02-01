@@ -10,6 +10,7 @@ namespace Umbraco.Composing
         public void Compose(Composition composition)
         {
             composition.Register<ISearchService, SearchService>(Lifetime.Request);
+            composition.Register(typeof(IDataTypeValueService), typeof(DataTypeValueService), Lifetime.Request); 
         }
     }
 }

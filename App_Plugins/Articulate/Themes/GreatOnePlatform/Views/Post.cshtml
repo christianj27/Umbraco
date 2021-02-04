@@ -1,0 +1,7 @@
+﻿@using Articulate
+@using Umbraco.Core.Models.PublishedContent
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<IPublishedContent>
+@{
+    Layout = "~/Views/WebBase.cshtml";
+    var articulateModel = (Articulate.Models.PostModel)Model;
+}

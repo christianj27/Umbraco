@@ -9,62 +9,62 @@
     Layout = "Master.cshtml";
 }
 
-@*<main class="content" role="main">
+<main class="content" role="main">
 
-        @if (!Model.Children.Any())
+    @if (!Model.Children.Any())
+    {
+        <article>No blog posts found</article>
+    }
+    else
+    {
+        foreach (var post in Model.Posts)
         {
-            <article>No blog posts found</article>
-        }
-        else
-        {
-            foreach (var post in Model.Posts)
-            {
-                <article class="preview">
-                    <header>
-                        <h1 class="post-title"><a href="@post.Url">@post.Name</a></h1>
-                        <div class="post-meta">
-                            <time datetime="@post.PublishedDate.ToString("yyyy-MM-dd")">
-                                @post.PublishedDate.ToString("dddd, MMMM dd, yyyy")
-                            </time>
-                        </div>
-                    </header>
-                    <section class="post-excerpt">
-                        @if (post.PostImage != null)
+            <article class="preview">
+                <header>
+                    <h1 class="post-title"><a href="@post.Url">@post.Name</a></h1>
+                    <div class="post-meta">
+                        <time datetime="@post.PublishedDate.ToString("yyyy-MM-dd")">
+                            @post.PublishedDate.ToString("dddd, MMMM dd, yyyy")
+                        </time>
+                    </div>
+                </header>
+                <section class="post-excerpt">
+                    @if (post.PostImage != null)
+                    {
+                        var thumbnail = Url.GetCropUrl(post.PostImage, cropAlias: "blogPost", useCropDimensions: true, htmlEncode: false, upScale: false);
+                        if (thumbnail != null)
                         {
-                            var thumbnail = Url.GetCropUrl(post.PostImage, cropAlias: "blogPost", useCropDimensions: true, htmlEncode: false, upScale: false);
-                            if (thumbnail != null)
-                            {
-                                <div class="postthumb" style="background: url(@thumbnail)"></div>
-                            }
+                            <div class="postthumb" style="background: url(@thumbnail)"></div>
                         }
-                        <p>
-                            @post.Excerpt&hellip;
-                        </p>
-                        <p class="readmore">
-                            <a href="@post.Url">Read this article <i class="fa fa-chevron-circle-right"></i></a>
-                        </p>
-                    </section>
+                    }
+                    <p>
+                        @post.Excerpt&hellip;
+                    </p>
+                    <p class="readmore">
+                        <a href="@post.Url">Read this article <i class="fa fa-chevron-circle-right"></i></a>
+                    </p>
+                </section>
 
-                </article>
-            }
-
-            @Html.ThemedPartial(Model, "Pager", Model.Pages)
-
+            </article>
         }
 
-    </main>*@
+        @Html.ThemedPartial(Model, "Pager", Model.Pages)
+        
+    }
+
+</main>
 
 
-<section class="blog-posts grid-system">
+<!--<section class="blog-posts grid-system">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="all-blog-posts">
-                    <div class="row">
+                    <div class="row">-->
                         @*@{ Html.RenderAction("RenderPostList", "Blog", new { numberOfItems = 6 }); }*@
                         @*@{ Html.Partial("~/Views/Partials/Blog/_PostList.cshtml"); }*@
-                        <!--Content-->
-                        @if (!Model.Children.Any())
+                        <!--<!--Content-->
+                        <!--if (!Model.Children.Any())
                         {
                             <article>No blog posts found</article>
                         }
@@ -78,17 +78,17 @@
                                 <div class="col-lg-6">
                                     <div class="blog-post">
                                         <div class="blog-thumb">
-                                            <a href="@post.Url"><img src="@thumbnail" alt="@post.Name"></a>
+                                            <a href="post.Url"><img src="thumbnail" alt="post.Name"></a>
                                         </div>
                                         <div class="down-content">
-                                            <span>@category[0]</span>
-                                            <a href="@post.Url"><h4>@post.Name</h4></a>
+                                            <span>category[0]</span>
+                                            <a href="post.Url"><h4>post.Name</h4></a>
                                             <ul class="post-info">
-                                                <li><a href="#">@post.Author</a></li>
-                                                <li><a href="#">@post.PublishedDate.ToString("MMMM dd, yyyy")</a></li>
+                                                <li><a href="#">post.Author</a></li>
+                                                <li><a href="#">post.PublishedDate.ToString("MMMM dd, yyyy")</a></li>-->
                                                 @*<li><a href="#">12 Comments</a></li>*@
-                                            </ul>
-                                            <p>@post.Excerpt&hellip;</p>
+                                            <!--</ul>
+                                            <p>post.Excerpt&hellip;</p>
                                             <div class="post-options">
                                                 <div class="row">
                                                     <div class="col-lg-12">
@@ -104,9 +104,9 @@
                                     </div>
                                 </div>
                             }
-                        }
+                        }-->
                         @*Pagination*@
-                        @Html.ThemedPartial(Model, "Pager", Model.Pages)
+                        <!--Html.ThemedPartial(Model, "Pager", Model.Pages)
                     </div>
                 </div>
             </div>
@@ -189,5 +189,5 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->-->
 

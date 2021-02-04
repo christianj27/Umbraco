@@ -496,6 +496,9 @@
     <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Post.cshtml" />
     <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Tags.cshtml" />
     <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Web.config" />
+    <Content Include="App_Plugins\Articulate\Themes\GreatOnePlatform\Views\List.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\GreatOnePlatform\Views\Post.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\GreatOnePlatform\Views\Partials\HeaderDescription.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\HomePage.cshtml" />
@@ -534,9 +537,7 @@
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.2.6.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.2.6.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Plugins\Articulate\Themes\Test\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

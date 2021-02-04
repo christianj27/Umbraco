@@ -1,0 +1,71 @@
+﻿@model Articulate.Models.ListModel
+@using Umbraco.Web
+@using Articulate
+@{
+    Layout = "WebBase.cshtml";
+}
+
+@* the fun starts here *@
+
+<!-- Page Content -->
+<!-- Banner Starts Here -->
+@{ Html.RenderAction("RenderHeadingPage", "SiteLayout"); }
+<!-- Banner Ends Here -->
+<section class="blog-posts grid-system">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="all-blog-posts">
+                    <div class="row">
+                        @*@{ Html.RenderAction("RenderPostList", "Blog", new { numberOfItems = 6 }); }*@
+                        @*@{ Html.Partial("~/Views/Partials/Blog/_PostList.cshtml"); }*@
+                        <!--Content-->
+                        @if (!Model.Children.Any())
+                        {
+                            <article>No blog posts found</article>
+                        }
+                        else
+                        {
+                            foreach (var post in Model.Posts)
+                            {
+                                var author = post.Value<IPublishedContent>("autho");
+                                var thumbnail = Url.GetCropUrl(post.PostImage, cropAlias: "blogPost", useCropDimensions: true, htmlEncode: false, upScale: false);
+                                var category = post.Value<string[]>("categories");
+                                <div class="col-lg-6">
+                                    <div class="blog-post">
+                                        <div class="blog-thumb">
+                                            <a href="@post.Url"><img src="@thumbnail" alt="@post.Name"></a>
+                                        </div>
+                                        <div class="down-content">
+                                            <span>@category[0]</span>
+                                            <a href="@post.Url"><h4>@post.Name</h4></a>
+                                            <ul class="post-info">
+                                                <li><a href="#">@author.Name</a></li>
+                                                <li><a href="#">@post.PublishedDate.ToString("MMMM dd, yyyy")</a></li>
+                                                @*<li><a href="#">12 Comments</a></li>*@
+                                            </ul>
+                                            <p>@post.Excerpt&hellip;</p>
+                                            <div class="post-options">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <ul class="post-tags">
+                                                            <li><i class="fa fa-tags"></i></li>
+                                                            <li><a href="#">Best Templates</a>,</li>
+                                                            <li><a href="#">TemplateMo</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        @*Pagination*@
+                        @Html.ThemedPartial(Model, "Pager", Model.Pages)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

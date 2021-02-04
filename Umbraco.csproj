@@ -415,6 +415,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Assets\css\normalize.css" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Assets\css\screen.css" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Assets\fonts\icons.svg" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Assets\js\feeds.js" />
     <Content Include="config\grid.editors.config.js" />
     <Content Include="config\Lang\cs-CZ.user.xml" />
     <Content Include="config\Lang\da-DK.user.xml" />
@@ -436,6 +440,7 @@
     <Content Include="config\Lang\zh-CN.user.xml" />
     <Content Include="config\logviewer.searches.config.js" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Technology.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -473,6 +478,24 @@
     <Content Include="config\HealthChecks.config" />
     <Content Include="config\ClientDependency.config" />
     <Content Include="config\BackOfficeTours\getting-started.json" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Assets\fonts\icons.eot" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Assets\fonts\icons.ttf" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Assets\fonts\icons.woff" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Author.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\List.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Master.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Partials\CommentsDisqus.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Partials\CommentsFacebook.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Partials\FooterDescription.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Partials\HeaderDescription.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Partials\Menu.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Partials\Pager.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Partials\PostList.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Partials\PostTags.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Partials\SearchBox.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Post.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Tags.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\VAPOR\Views\Web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\HomePage.cshtml" />
@@ -499,6 +522,7 @@
     <Content Include="Views\Partials\BlockList\Default.cshtml" />
     <Content Include="Views\SearchPage.cshtml" />
     <Content Include="Views\Partials\HomePage\_SearchForm.cshtml" />
+    <Content Include="Views\Article.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -510,7 +534,9 @@
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.2.6.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.2.6.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Plugins\Articulate\Themes\Test\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

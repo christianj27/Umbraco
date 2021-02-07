@@ -7,9 +7,14 @@
     var pageSize = Model.Pages.PageSize;
     var totalItemCount = Model.BlogArchiveNode.Children.Count();
     var pageCount = totalItemCount > 0 ? Math.Ceiling((double)totalItemCount / pageSize) : 1;
-    string UrlString = Model.Pages.HasNext == true ?
+
+    if (!Model.Pages.HasNext == true)
+    {
+
+    }
+    string UrlString = Model.Pages.HasNext == true || Model.Pages.HasNext == true ?
                         Model.Pages.NextUrl.Substring(0, Model.Pages.NextUrl.IndexOf("?")) :
-                        Model.Pages.PreviousUrl.Substring(0, Model.Pages.PreviousUrl.IndexOf("?"));
+                        "";
 
 
     if (pageNumber > pageCount)

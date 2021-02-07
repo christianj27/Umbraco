@@ -1,0 +1,15 @@
+@using Articulate
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Articulate.Models.PostModel>
+
+
+@if (Model.Tags.Any())
+{
+    <div class="post-meta tags">
+
+        @if (Model.Tags.Any())
+        {
+            @Html.ListTags(Model,
+                    @<a href="@Url.ArticulateTagUrl(Model, @item)">@item</a>)
+        }
+    </div>
+}

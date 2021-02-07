@@ -1,0 +1,27 @@
+@using Articulate
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Articulate.Models.PostModel>
+
+<head>
+    <style>
+        a {color: #f48840;}
+        /* CSS link color */
+    </style>
+</head>
+
+@if (Model.Categories.Any())
+{
+    <div class="post-meta tags">
+
+        @if (Model.Categories.Any())
+        {
+            foreach (var category in Model.Categories)
+            {
+                <a href="@Url.ArticulateCategoryUrl(Model, category)">@category</a>
+                if (category != Model.Categories.Last())
+                {
+                    <span>, </span>
+                }
+            }
+        }
+    </div>
+}

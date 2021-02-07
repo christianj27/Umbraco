@@ -1,0 +1,18 @@
+@using Articulate
+@using Articulate.Models
+@using Umbraco.Core
+@using Umbraco.Web
+@using Umbraco.Core.Models.PublishedContent
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<IPublishedContent>
+
+@{
+    Layout = "~/Views/WebBase.cshtml";
+    var tagModel = (Articulate.Models.TagListModel)Model;
+
+    var asArray = tagModel.Tags.ToArray();
+}
+
+@for (var i = 0; i < asArray.Length; i++)
+{
+    <a id="tag-@asArray[i].HtmlId" href="@asArray[i].TagUrl">@asArray[i].TagName</a>
+}

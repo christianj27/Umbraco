@@ -87,11 +87,31 @@ Umbraco.Core.Migrations.Upgrade.V_8_0_0.VariantsMigration, Umbraco.Core, Version
 Umbraco.Core.Migrations.Upgrade.V_8_0_0.ContentVariationMigration, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Migrations.Upgrade.V_8_0_0.DataTypes.PreValueMigratorComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Services.Implement.KeyValueService+InitializeMigration, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Validation.ContentTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Validation.MediaTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Validation.MemberTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Umbraco.ModelsBuilderComposer, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Umbraco.ModelsBuilderBackOfficeController, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Articulate.PropertyEditors.ArticulateMarkdownPropertyEditor, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.PropertyEditors.ArticulateMarkdownEditorValueConverter, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.PropertyEditors.ThemePickerPropertyEditor, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Components.ArticulateComposer, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Packaging.ArticulateInstallPackageAction, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateAuthorsController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateAuthorController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateArchiveController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateBlogImportController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateBlogDataInstallController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateRssController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.FeedController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.MardownEditorApiController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.MarkdownEditorController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.OpenSearchController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.RsdController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulatePropertyEditorsController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateSearchController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateTagsController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateMarkdownController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateRichTextController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ThemeEditorController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ThemeTreeController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.WlwManifestController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.BlogController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.HomePageController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.SearchPageController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -99,6 +119,17 @@ Umbraco.Controller.SiteLayoutController, Umbraco, Version=1.0.0.0, Culture=neutr
 Umbraco.Controller.Surface.SearchSurfaceController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Composing.IndexerComposer, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Composing.RegisterServiceComposer, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.ModelsBuilderDashboard, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.Compose.ModelsBuilderComposer, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.BackOffice.MediaTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.BackOffice.MemberTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.BackOffice.ModelsBuilderDashboardController, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.BackOffice.ContentTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Validation.ContentTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Validation.MediaTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Validation.MemberTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Umbraco.ModelsBuilderComposer, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Umbraco.ModelsBuilderBackOfficeController, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -303,37 +334,6 @@ Umbraco.Web.Cache.MemberGroupCacheRefresher, Umbraco.Web, Version=8.0.0.0, Cultu
 Umbraco.Web.Cache.PublicAccessCacheRefresher, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Cache.TemplateCacheRefresher, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Cache.UserCacheRefresher, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.ModelsBuilderDashboard, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.Compose.ModelsBuilderComposer, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.BackOffice.MediaTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.BackOffice.MemberTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.BackOffice.ModelsBuilderDashboardController, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.BackOffice.ContentTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Articulate.PropertyEditors.ArticulateMarkdownPropertyEditor, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.PropertyEditors.ArticulateMarkdownEditorValueConverter, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.PropertyEditors.ThemePickerPropertyEditor, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Components.ArticulateComposer, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Packaging.ArticulateInstallPackageAction, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateAuthorsController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateAuthorController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateArchiveController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateBlogImportController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateBlogDataInstallController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateRssController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.FeedController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.MardownEditorApiController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.MarkdownEditorController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.OpenSearchController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.RsdController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulatePropertyEditorsController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateSearchController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateTagsController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateMarkdownController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateRichTextController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ThemeEditorController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ThemeTreeController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.WlwManifestController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.Composing.IComposer
 
@@ -344,9 +344,11 @@ Umbraco.Core.Compose.RelateOnCopyComposer, Umbraco.Core, Version=8.0.0.0, Cultur
 Umbraco.Core.Compose.RelateOnTrashComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Runtime.CoreInitialComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Migrations.Upgrade.V_8_0_0.DataTypes.PreValueMigratorComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Umbraco.ModelsBuilderComposer, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Articulate.Components.ArticulateComposer, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Composing.IndexerComposer, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Composing.RegisterServiceComposer, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.Compose.ModelsBuilderComposer, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Umbraco.ModelsBuilderComposer, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.SignalR.PreviewHubComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Runtime.WebInitialComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Runtime.WebFinalComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -365,8 +367,6 @@ Umbraco.Web.Compose.PublicAccessComposer, Umbraco.Web, Version=8.0.0.0, Culture=
 Umbraco.Web.Compose.NestedContentPropertyComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Compose.DatabaseServerRegistrarAndMessengerComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Cache.DistributedCacheBinderComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.Compose.ModelsBuilderComposer, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Articulate.Components.ArticulateComposer, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.PropertyEditors.IPropertyValueConverter
 
@@ -391,6 +391,7 @@ Umbraco.Core.PropertyEditors.ValueConverters.TextStringValueConverter, Umbraco.C
 Umbraco.Core.PropertyEditors.ValueConverters.TinyMceValueConverter, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.PropertyEditors.ValueConverters.UploadPropertyConverter, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.PropertyEditors.ValueConverters.YesNoValueConverter, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Articulate.PropertyEditors.ArticulateMarkdownEditorValueConverter, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ValueConverters.BlockListPropertyValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ValueConverters.MultiUrlPickerValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ValueConverters.FlexibleDropdownPropertyValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -403,10 +404,14 @@ Umbraco.Web.PropertyEditors.ValueConverters.ContentPickerValueConverter, Umbraco
 Umbraco.Web.PropertyEditors.ValueConverters.MarkdownEditorValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ValueConverters.TextStringValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ValueConverters.RteMacroRenderingValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Articulate.PropertyEditors.ArticulateMarkdownEditorValueConverter, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.Mvc.PluginController
 
+Articulate.Controllers.FeedController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.MarkdownEditorController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.OpenSearchController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.RsdController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.WlwManifestController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.BlogController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.HomePageController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Controller.SiteLayoutController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -415,16 +420,9 @@ Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Cult
 Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbLoginController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.FeedController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.MarkdownEditorController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.OpenSearchController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.RsdController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.WlwManifestController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.Mvc.IRenderMvcController
 
-Umbraco.Controller.SearchPageController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.Web.Mvc.RenderMvcController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Articulate.Controllers.ArticulateAuthorsController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 Articulate.Controllers.ArticulateAuthorController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 Articulate.Controllers.ArticulateArchiveController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
@@ -434,9 +432,18 @@ Articulate.Controllers.ArticulateSearchController, Articulate, Version=4.2.1.0, 
 Articulate.Controllers.ArticulateTagsController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 Articulate.Controllers.ArticulateMarkdownController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 Articulate.Controllers.ArticulateRichTextController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Controller.SearchPageController, Umbraco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.Mvc.RenderMvcController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.WebApi.UmbracoApiController
 
+Articulate.Controllers.ArticulateBlogImportController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulateBlogDataInstallController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.MardownEditorApiController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ArticulatePropertyEditorsController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ThemeEditorController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.Controllers.ThemeTreeController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.BackOffice.ModelsBuilderDashboardController, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Umbraco.ModelsBuilderBackOfficeController, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Trees.LogViewerTreeController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Trees.FilesTreeController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -510,13 +517,6 @@ Umbraco.Web.Editors.ContentTypeController, Umbraco.Web, Version=8.0.0.0, Culture
 Umbraco.Web.Editors.MediaTypeController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Editors.SectionController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Editors.MediaController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.BackOffice.ModelsBuilderDashboardController, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateBlogImportController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulateBlogDataInstallController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.MardownEditorApiController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ArticulatePropertyEditorsController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ThemeEditorController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.Controllers.ThemeTreeController, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.Mvc.SurfaceController
 
@@ -532,6 +532,7 @@ Umbraco.Web.Controllers.UmbLoginController, Umbraco.Web, Version=8.0.0.0, Cultur
 Umbraco.Core.Dashboards.IDashboard
 
 Umbraco.Core.Manifest.ManifestDashboard, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.ModelsBuilderDashboard, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Dashboards.ContentDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Dashboards.ExamineDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Dashboards.FormsDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -542,11 +543,12 @@ Umbraco.Web.Dashboards.ProfilerDashboardDashboard, Umbraco.Web, Version=8.0.0.0,
 Umbraco.Web.Dashboards.PublishedStatusDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Dashboards.RedirectUrlDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Dashboards.SettingsDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.ModelsBuilderDashboard, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.PropertyEditors.IDataEditor
 
 Umbraco.Core.PropertyEditors.LabelPropertyEditor, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Articulate.PropertyEditors.ArticulateMarkdownPropertyEditor, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
+Articulate.PropertyEditors.ThemePickerPropertyEditor, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.BlockListPropertyEditor, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.MultiUrlPickerPropertyEditor, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ContentPickerPropertyEditor, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -584,8 +586,6 @@ Umbraco.Web.PropertyEditors.ParameterEditors.MultiplePropertyGroupParameterEdito
 Umbraco.Web.PropertyEditors.ParameterEditors.MultiplePropertyTypeParameterEditor, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ParameterEditors.PropertyGroupParameterEditor, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ParameterEditors.PropertyTypeParameterEditor, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Articulate.PropertyEditors.ArticulateMarkdownPropertyEditor, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
-Articulate.PropertyEditors.ThemePickerPropertyEditor, Articulate, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.Cache.ICacheRefresher
 
@@ -626,12 +626,12 @@ Umbraco.Web.Trees.ContentTreeController, Umbraco.Web, Version=8.0.0.0, Culture=n
 
 Umbraco.Web.Editors.IEditorValidator
 
-Umbraco.ModelsBuilder.Validation.ContentTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Validation.MediaTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Validation.MemberTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Embedded.BackOffice.MediaTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Embedded.BackOffice.MemberTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Embedded.BackOffice.ContentTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Validation.ContentTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Validation.MediaTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Validation.MemberTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.Actions.IAction
 

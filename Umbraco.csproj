@@ -465,6 +465,7 @@
     <Compile Include="Models\NavigationLink.cs" />
     <Compile Include="Models\CategoryListItem.cs" />
     <Compile Include="Models\NavigationListItem.cs" />
+    <Compile Include="Models\PostAndTagListModels.cs" />
     <Compile Include="Models\SearchContentModels.cs" />
     <Compile Include="Models\ViewModels\SearchViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -552,6 +553,9 @@
     <Content Include="App_Plugins\Articulate\Themes\Phantom\Views\Partials\Sidebar.cshtml" />
     <Content Include="App_Plugins\Articulate\Themes\Phantom\Views\Post.cshtml" />
     <Content Include="App_Plugins\Articulate\Themes\Phantom\Views\Web.config" />
+    <Content Include="App_Plugins\Articulate\Themes\GreatOnePlatform\Views\Partials\PostTags.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\GreatOnePlatform\Views\Tags.cshtml" />
+    <Content Include="App_Plugins\Articulate\Themes\GreatOnePlatform\Views\Partials\PostCategory.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\HomePage.cshtml" />

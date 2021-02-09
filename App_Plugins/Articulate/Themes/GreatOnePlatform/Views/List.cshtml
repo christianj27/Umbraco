@@ -38,8 +38,10 @@
                             foreach (var post in articleModel.Posts)
                             {
                                 var thumbnail = Url.GetCropUrl(post.PostImage, cropAlias: "blogPost", useCropDimensions: true, htmlEncode: false, upScale: false);
+                                var tempExcerpt = post.Excerpt.ToString();
                                 category.Add(Html.ThemedPartial(articleModel, "PostCategory", post).ToString());
                                 var test2 = Html.ThemedPartial(articleModel, "PostCategory", post);
+                                const int MaxLength = 150;
                                 //categoryAllPost = category.ToArray();
                                 <div class="col-lg-6">
                                     <div class="blog-post">
@@ -54,7 +56,16 @@
                                                 <li><a href="#">@post.PublishedDate.ToString("MMMM dd, yyyy")</a></li>
                                                 @*<li><a href="#">12 Comments</a></li>*@
                                             </ul>
-                                            <p>@post.Excerpt&hellip;</p>
+                                            @if (tempExcerpt.Length > MaxLength)
+                                            {
+                                                tempExcerpt = tempExcerpt.Substring(0, MaxLength) + " ...";
+                                                <p>@tempExcerpt</p>
+                                            }
+                                            else
+                                            {
+                                                <p>@tempExcerpt&hellip;</p>
+                                            }
+                                            @*<p>@post.Excerpt&hellip;</p>*@
                                             <div class="post-options">
                                                 <div class="row">
                                                     <div class="col-lg-12">
@@ -66,7 +77,7 @@
                                                                     @Html.ThemedPartial(articleModel, "PostTags", post)
                                                                 </li>
                                                                 @*<li><a href="#">Best Templates</a>,</li>
-                                                            <li><a href="#">TemplateMo</a></li>*@
+                            <li><a href="#">TemplateMo</a></li>*@
                                                             </ul>
                                                         }
                                                     </div>

@@ -3,19 +3,44 @@
 @using Umbraco.Web
 @using Umbraco.Models
 @using System.Collections
+@using Umbraco.Core;
+@using Umbraco.Core.Models;
+@using Umbraco.Core.Services;
+@using System.Linq
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<IPublishedContent>
 @{
     Layout = "~/Views/WebBase.cshtml";
 
-    //dynamic myModel = new ExpandoObject();
     var articleModel = (Articulate.Models.ListModel)Model;
-    //var tagModel = (Articulate.Models.TagListModel)Model;
-    var categories = Umbraco.TagQuery
-                            .GetAllContentTags("ArticulateCategories")
-                            .Select(x => x.Text)
-                            .OrderBy(x => x);
-    List<string> category = new List<string>();
-    List<string> categoryAllPost = new List<string>();
+    var allListArticle = articleModel.BlogArchiveNode.Children();
+
+    HashSet<string> categories = new HashSet<string>();
+    HashSet<string> tags = new HashSet<string>();
+    foreach (var allPost in allListArticle)
+    {
+        var rawCategories = allPost.Value<string[]>("categories");
+        var rawTags = allPost.Value<string[]>("tags");
+        categories.Add(rawCategories[0]);
+        foreach(var tag in rawTags)
+        {
+            tags.Add(tag);
+        }
+    }
+    var categoriesUrl = articleModel.BlogArchiveNode.Parent.Value<string>("categoriesUrlName");
+    var tagsUrl = articleModel.BlogArchiveNode.Parent.Value<string>("tagsUrlName");
+
+
+    //var categories = Umbraco.TagQuery
+    //                .GetAllContentTags("ArticulateCategories")
+    //                .Select(x => x.Text)
+    //                .OrderBy(x => x);
+
+    //var service = Services.TagService;
+    //var blogTags = service.GetAllTags("ArticulateCategories");
+
+    //var financeTag = service.GetTagsForProperty(1285, "categories");
+    //var financeTag2 = service.GetTagsForEntity(1285, "ArticulateCategories");
+
 }
 <!-- Page Content -->
 <!-- Banner Starts Here -->
@@ -39,10 +64,7 @@
                             {
                                 var thumbnail = Url.GetCropUrl(post.PostImage, cropAlias: "blogPost", useCropDimensions: true, htmlEncode: false, upScale: false);
                                 var tempExcerpt = post.Excerpt.ToString();
-                                category.Add(Html.ThemedPartial(articleModel, "PostCategory", post).ToString());
-                                var test2 = Html.ThemedPartial(articleModel, "PostCategory", post);
                                 const int MaxLength = 150;
-                                //categoryAllPost = category.ToArray();
                                 <div class="col-lg-6">
                                     <div class="blog-post">
                                         <div class="blog-thumb">
@@ -77,7 +99,7 @@
                                                                     @Html.ThemedPartial(articleModel, "PostTags", post)
                                                                 </li>
                                                                 @*<li><a href="#">Best Templates</a>,</li>
-                            <li><a href="#">TemplateMo</a></li>*@
+                                                                    <li><a href="#">TemplateMo</a></li>*@
                                                             </ul>
                                                         }
                                                     </div>
@@ -94,88 +116,77 @@
                 </div>
             </div>
             <div class="col-lg-4">
-            <div class="sidebar">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="sidebar-item search">
-                            <form id="search_form" name="gs" method="GET" action="#">
-                                <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
-                            </form>
-                        </div>
-                    </div>
-                    @*<div class="col-lg-12">
-                        <div class="sidebar-item recent-posts">
-                            <div class="sidebar-heading">
-                                <h2>Recent Posts</h2>
-                            </div>
-                            <div class="content">
-                                <ul>
-                                    <li>
-                                        <a href="post-details.html">
-                                            <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
-                                            <span>May 31, 2020</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="post-details.html">
-                                            <h5>Suspendisse et metus nec libero ultrices varius eget in risus</h5>
-                                            <span>May 28, 2020</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="post-details.html">
-                                            <h5>Swag hella echo park leggings, shaman cornhole ethical coloring</h5>
-                                            <span>May 14, 2020</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                <div class="sidebar">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sidebar-item search">
+                                <form id="search_form" name="gs" method="GET" action="#">
+                                    <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
+                                </form>
                             </div>
                         </div>
-                    </div>*@
-                    <div class="col-lg-12">
-                        <div class="sidebar-item categories">
-                            <div class="sidebar-heading">
-                                <h2>Categories</h2>
-                            </div>
-                            <div class="content">
-                                <ul>
-                                    @{ 
-                                        var test = new HashSet<string>(categoryAllPost);
-                                    }
-                                    <li>
-                                        @*@Html.ThemedPartial(tagModel, "Tags");*@
-                                    </li>
-                                    <li><a href="#">- Nature Lifestyle</a></li>
-                                    <li><a href="#">- Awesome Layouts</a></li>
-                                    <li><a href="#">- Creative Ideas</a></li>
-                                    <li><a href="#">- Responsive Templates</a></li>
-                                    <li><a href="#">- HTML5 / CSS3 Templates</a></li>
-                                    <li><a href="#">- Creative &amp; Unique</a></li>
-                                </ul>
+                        @*<div class="col-lg-12">
+                                <div class="sidebar-item recent-posts">
+                                    <div class="sidebar-heading">
+                                        <h2>Recent Posts</h2>
+                                    </div>
+                                    <div class="content">
+                                        <ul>
+                                            <li>
+                                                <a href="post-details.html">
+                                                    <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
+                                                    <span>May 31, 2020</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="post-details.html">
+                                                    <h5>Suspendisse et metus nec libero ultrices varius eget in risus</h5>
+                                                    <span>May 28, 2020</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="post-details.html">
+                                                    <h5>Swag hella echo park leggings, shaman cornhole ethical coloring</h5>
+                                                    <span>May 14, 2020</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="col-lg-12">
+                            <div class="sidebar-item categories">
+                                <div class="sidebar-heading">
+                                    <h2>Categories</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        @foreach (var category in categories)
+                                        {
+                                            <li><a href="@($"{articleModel.BlogArchiveNode.Parent.Url}{categoriesUrl}/{category}")">- @category</a></li>
+                                        }
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="sidebar-item tags">
-                            <div class="sidebar-heading">
-                                <h2>Tag Clouds</h2>
-                            </div>
-                            <div class="content">
-                                <ul>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Creative</a></li>
-                                    <li><a href="#">HTML5</a></li>
-                                    <li><a href="#">Inspiration</a></li>
-                                    <li><a href="#">Motivation</a></li>
-                                    <li><a href="#">PSD</a></li>
-                                    <li><a href="#">Responsive</a></li>
-                                </ul>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item tags">
+                                <div class="sidebar-heading">
+                                    <h2>Tag Clouds</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        @foreach (var tag in tags)
+                                        {
+                                            <li><a href="@($"{articleModel.BlogArchiveNode.Parent.Url}{tagsUrl}/{tag}")">@tag</a></li>
+                                        }
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
         </div>
     </div>

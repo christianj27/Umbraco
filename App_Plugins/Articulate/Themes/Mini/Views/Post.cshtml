@@ -25,7 +25,7 @@
                 <!--- POST CONTENT --->
 
                 <article role="article" itemscope itemtype="http://schema.org/Article" class="postlistArticle">
-                    <h2 class="post-title">@Model.Name</h2>
+                    <h1 class="post-title">@Model.Name</h1>
                     
                     @Html.AuthorCitation(Model)
                     <time datetime="@Model.PublishedDate.ToString("yyyy-MM-dd")" itemprop="datePublished">

@@ -18,7 +18,7 @@ namespace Umbraco.Controller
         {
             _searchService = searchService;
             _dataTypeValueService = dataTypecValueService;
-            //DocTypeAliases = new[] { "BlogPost", "blogEntries" };
+            DocTypeAliases = new[] { "BlogPost", "blogEntries", "ArticulateMarkdown" };
         }
 
         public ActionResult Index(ContentModel model, string query, string page, string category)
@@ -41,10 +41,10 @@ namespace Umbraco.Controller
                 pageNumber = 1;
             }
 
-            //var searchResults = _searchService.GetPageOfContentSearchResults(query, category,
-            //    pageNumber, out var totalItemCount, DocTypeAliases);
             var searchResults = _searchService.GetPageOfContentSearchResults(query, category,
-                pageNumber, out var totalItemCount, null);
+                pageNumber, out var totalItemCount, DocTypeAliases);
+            //var searchResults = _searchService.GetPageOfContentSearchResults(query, category,
+            //    pageNumber, out var totalItemCount, null);
 
             searchPageModel.SearchViewModel = searchViewModel;
             searchPageModel.SearchResults = searchResults;

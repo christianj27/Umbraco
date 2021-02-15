@@ -9,8 +9,8 @@
     //var blogPage = Model.Root().Descendants().Where(x => x.ContentType.Alias == "blogEntries").FirstOrDefault();
 
     IEnumerable<IPublishedContent> entries = null;
-    List<IPublishedContent> allPost = new List<IPublishedContent>();
-    List<IPublishedContent> financePost = new List<IPublishedContent>();
+    var allPost = new List<IPublishedContent>();
+    var financePost = new List<IPublishedContent>();
 
     foreach (var allArticulateRoot in Model.Children(c => c.ContentType.Alias == "Articulate")) //Get all Content with Articulate Document Type
     {

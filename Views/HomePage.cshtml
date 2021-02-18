@@ -60,6 +60,8 @@
                 .ToList(); //filter all the post to recent published date
 }
 
+<title>OneGreatPlatform</title>
+
 <!-- Carosel -->
 <div class="main-banner header-text">
     <div class="container-fluid">
@@ -96,9 +98,7 @@
             <div class="col-lg-8">
                 <div class="all-blog-posts">
                     <div class="row">
-                        @*@{ Html.RenderAction("RenderBlogPost", "HomePage", new { numberOfItems = 4 }); }*@
-                        @*@{ Html.Partial("~/Views/Partials/Blog/_PostList.cshtml"); }*@
-                        <form action="/search/">
+                        @*<form action="/search/">
                                 <div class="col-lg-8">
                                     <div class="form-outline">
                                         <input type="text" name="Query" class="form-control" placeholder="type to search..." autocomplete="on" />
@@ -113,7 +113,7 @@
                                         </button>
                                     </div>
                                 </div>
-                            </form>
+                            </form>*@
                         @if (filteredEntries == null || filteredEntries.Count() == 0)
                         {
                             <div class="md-margin-bottom-40 text-center">

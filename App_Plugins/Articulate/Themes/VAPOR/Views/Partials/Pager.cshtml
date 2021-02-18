@@ -5,6 +5,8 @@
     <nav class="pagination" role="pagination">
         @if (Model.HasPrevious)
         {
+            var rootUrl = Model.PreviousUrl ?? Model.NextUrl;
+            rootUrl = rootUrl.Substring(0, rootUrl.IndexOf("?p=", StringComparison.Ordinal) + 3);
             <a class="newer-posts" href="@Model.PreviousUrl">
                 <i class="fa fa-chevron-circle-left"></i> Newer
             </a>

@@ -721,6 +721,7 @@
     <Content Include="assets\fonts\slick.eot" />
     <Content Include="assets\fonts\slick.ttf" />
     <Content Include="assets\fonts\slick.woff" />
+    <Content Include="App_Plugins\Articulate\Themes\GreatOnePlatform\Views\Partials\SearchBox.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\HomePage.cshtml" />

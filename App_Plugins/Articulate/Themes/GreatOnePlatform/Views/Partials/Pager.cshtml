@@ -2,56 +2,76 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<Articulate.Models.ListModel>
 
 @{
+    //var pageNumber = 1; int.TryParse(Request.QueryString["p"], out pageNumber);
+    //var pageSize = Model.Pages.PageSize;
+    //var totalItemCount = Model.BlogArchiveNode.Children.Count();
+    string UrlString = "";
+    //var pageCount = totalItemCount > 0 ? Math.Ceiling((double)totalItemCount / pageSize) : 1;
 
-    var pageNumber = 1; int.TryParse(Request.QueryString["p"], out pageNumber);
-    var pageSize = Model.Pages.PageSize;
-    var totalItemCount = Model.BlogArchiveNode.Children.Count();
-    var pageCount = totalItemCount > 0 ? Math.Ceiling((double)totalItemCount / pageSize) : 1;
-
-    if (!Model.Pages.HasNext == true)
+    if (Model.Pages.HasNext == true)
     {
-
+        if (Model.Pages.NextUrl.Contains("search"))
+        {
+            var startString = Model.Pages.NextUrl.Substring(0, Model.Pages.NextUrl.IndexOf("?"));
+            var endString = Model.Pages.NextUrl.Substring(Model.Pages.NextUrl.IndexOf("&") + 1);
+            UrlString = $"{startString}?{endString}&";
+        }
+        else
+        {
+            UrlString = $"{Model.Pages.NextUrl.Substring(0, Model.Pages.NextUrl.IndexOf("?"))}?";
+        }
     }
-    string UrlString = Model.Pages.HasNext == true || Model.Pages.HasNext == true ?
-                        Model.Pages.NextUrl.Substring(0, Model.Pages.NextUrl.IndexOf("?")) :
-                        "";
-
-
-    if (pageNumber > pageCount)
+    else if (Model.Pages.HasPrevious == true && Model.Pages.HasNext == false)
     {
-        pageNumber = Convert.ToInt32(pageCount);
+        if (Model.Pages.PreviousUrl.Contains("search"))
+        {
+            var startString = Model.Pages.PreviousUrl.Substring(0, Model.Pages.PreviousUrl.IndexOf("?"));
+            var endString = Model.Pages.PreviousUrl.Substring(Model.Pages.PreviousUrl.IndexOf("&") + 1);
+            UrlString = $"{startString}?{endString}&";
+        }
+        else
+        {
+            UrlString = $"{Model.Pages.PreviousUrl.Substring(0, Model.Pages.PreviousUrl.IndexOf("?"))}?";
+        }
     }
-    else if (pageNumber < 1)
-    {
-        pageNumber = 1;
-    }
+
+
+    //if (pageNumber > pageCount)
+    //{
+    //    pageNumber = Convert.ToInt32(pageCount);
+    //}
+    //else if (pageNumber < 1)
+    //{
+    //    pageNumber = 1;
+    //}
 }
+
 
 <div class="col-lg-12" ">
     <ul class="page-numbers">
         @if (Model.Pages.HasNext || Model.Pages.HasPrevious)
         {
-            if (pageCount > 1)
+            @* ##### Previous Button ##### *@
+            if (Model.Pages.HasPrevious)
             {
-                if (pageNumber > 1)
-                {
-                    <li><a href="@($"{UrlString}?p={pageNumber - 1}")"><i class="fa fa-angle-double-left"></i></a></li>
-                }
-                for (int p = Math.Max(1, pageNumber - 2); p <= Math.Min(pageNumber + 2, pageCount); p++) //Function Max and min use for limit showed number in pagination
-                {
-                    <li class="@(p == pageNumber? "active" : string.Empty)">
-                        <a href="@($"{UrlString}?p={p}")">@p</a>
-                    </li>
-                }
-                @*<div class="paging-block text-center">
-                        <span>Page @pageNumber of @pageCount</span>
-                    </div>*@
-                if (pageNumber < pageCount)
-                {
-                    <li><a href="@($"{UrlString}?p={pageNumber + 1}")"><i class="fa fa-angle-double-right"></i></a></li>
-                }
+                <li><a href="@Model.Pages.PreviousUrl"><i class="fa fa-angle-double-left"></i></a></li>
+            }
+
+            @* ##### Page Numbers ##### *@
+            for (int cpi = Math.Max(Model.Pages.CurrentPageIndex - 2, 0); cpi < Math.Min(Model.Pages.CurrentPageIndex + 3, Model.Pages.TotalPages); cpi++)
+            {
+                var pageNumbers = cpi + 1;
+                <li class="@(pageNumbers == Model.Pages.CurrentPageIndex + 1? "active" : string.Empty)">
+                    <a href="@($"{UrlString}p={pageNumbers}")">@pageNumbers</a>
+                </li>
+
+            }
+
+            @* ##### Next Button ##### *@
+            if (Model.Pages.HasNext)
+            {
+                <li><a href="@Model.Pages.NextUrl"><i class="fa fa-angle-double-right"></i></a></li>
             }
         }
     </ul>
 </div>
-

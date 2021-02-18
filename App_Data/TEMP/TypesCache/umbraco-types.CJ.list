@@ -680,6 +680,3 @@ Umbraco.Core.Models.PublishedContent.PublishedElementModel
 Umbraco.Core.Models.PublishedContent.PublishedContentModel
 
 
-Umbraco.Core.Deploy.IServiceConnector
-
-

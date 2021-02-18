@@ -58,14 +58,38 @@
                                                         @*<a href="https://www.facebook.com/sharer/sharer.php?u=@UmbracoContext.UrlAbsolute(Model.Id)">Facebook</a>,*@
                                                         <a href="https://www.facebook.com/sharer/sharer.php?u=@UmbracoContext.UrlAbsolute(Model.Id)"
                                                            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                                                            <i class="fa fa-2x fa-fw fa-facebook-square"></i>
+                                                            <i class="fab fa-2x fa-facebook-square"></i>
                                                         </a>
                                                     </li>
                                                     <li>
                                                         @*<a href="http://twitter.com/share?text=@Model.Name&url=@UmbracoContext.UrlAbsolute(Model.Id)"> Twitter</a>*@
                                                         <a href="http://twitter.com/share?text=@Model.Name&url=@UmbracoContext.UrlAbsolute(Model.Id)"
                                                            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                                                            <i class="fa fa-2x fa-fw fa-twitter"></i>
+                                                            <i class="fab fa-2x fa-twitter-square"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://www.linkedin.com/shareArticle?mini=true&url=@UmbracoContext.UrlAbsolute(Model.Id)&title=@Model.Name&source=@Model.Parent.Parent.Parent.Url(mode:UrlMode.Absolute)"
+                                                           onclick="window.open(this.href, 'linkedin-share', 'width=550,height=235');return false;">
+                                                            <i class="fab fa-2x fa-linkedin"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=@Model.Name&body=@UmbracoContext.UrlAbsolute(Model.Id)"
+                                                           onclick="window.open(this.href, 'linkedin-share', 'width=550,height=235');return false;">
+                                                            <i class="fas fa-2x fa-envelope-square"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="whatsapp://send?text=@UmbracoContext.UrlAbsolute(Model.Id)"
+                                                           onclick="window.open(this.href, 'google-plus-share', 'width=550,height=235');return false;">
+                                                            <i class="fab fa-2x fa-whatsapp"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://telegram.me/share/url?url=@UmbracoContext.UrlAbsolute(Model.Id)"
+                                                           onclick="window.open(this.href, 'telegram-share', 'width=550,height=235');return false;">
+                                                            <i class="fab fa-2x fa-telegram"></i>
                                                         </a>
                                                     </li>
                                                 </ul>

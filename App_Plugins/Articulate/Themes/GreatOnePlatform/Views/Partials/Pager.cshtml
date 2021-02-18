@@ -75,3 +75,32 @@
         }
     </ul>
 </div>
+
+<!--<div class="col-lg-12" ">
+    <ul class="page-numbers">
+        if (Model.Pages.HasNext || Model.Pages.HasPrevious)
+        {
+            if (pageCount > 1)
+            {
+                if (pageNumber > 1)
+                {
+                    <li><a href="($"{UrlString}p={pageNumber - 1}")"><i class="fa fa-angle-double-left"></i></a></li>
+                }
+                for (int p = Math.Max(1, pageNumber - 2); p <= Math.Min(pageNumber + 2, pageCount); p++) //Function Max and min use for limit showed number in pagination
+                {
+                    <li class="(p == pageNumber? "active" : string.Empty)">
+                        <a href="($"{UrlString}p={p}")">p</a>
+                    </li>
+                }-->
+                @*<div class="paging-block text-center">
+                        <span>Page @pageNumber of @pageCount</span>
+                    </div>*@
+                <!--if (pageNumber < pageCount)
+                {
+                    <li><a href="($"{UrlString}p={pageNumber + 1}")"><i class="fa fa-angle-double-right"></i></a></li>
+                }
+            }
+        }
+    </ul>
+</div>-->
+

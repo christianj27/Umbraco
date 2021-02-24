@@ -460,6 +460,7 @@
     <Content Include="App_Plugins\Articulate\Themes\VAPOR\Assets\css\screen.css" />
     <Content Include="App_Plugins\Articulate\Themes\VAPOR\Assets\fonts\icons.svg" />
     <Content Include="App_Plugins\Articulate\Themes\VAPOR\Assets\js\feeds.js" />
+    <Content Include="assets\css\custom-style.css" />
     <Content Include="assets\css\flex-slider.css" />
     <Content Include="assets\css\fontawesome.css" />
     <Content Include="assets\css\owl.css" />

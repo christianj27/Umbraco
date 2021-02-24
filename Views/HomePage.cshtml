@@ -6,11 +6,10 @@
 
 @{
     Layout = "WebBase.cshtml";
-    //var blogPage = Model.Root().Descendants().Where(x => x.ContentType.Alias == "blogEntries").FirstOrDefault();
 
+    int num = 1; //Index for css class
     IEnumerable<IPublishedContent> entries = null;
     var allPost = new List<IPublishedContent>();
-    var financePost = new List<IPublishedContent>();
 
     foreach (var allArticulateRoot in Model.Children(c => c.ContentType.Alias == "Articulate")) //Get all Content with Articulate Document Type
     {
@@ -23,21 +22,15 @@
                             .Take(6)
                             .ToList(); //filter with recent publishedDate and categories not null
 
-        var filteredFinancialPost = entries
-                                .Where(x => x.Value<string>("categories") != null && x.Parent.Parent.Name == "Financial")
-                                .OrderByDescending(x => x.Value("publishedDate"))
-                                .Take(6)
-                                .ToList();
-        financePost.AddRange(filteredFinancialPost);
         allPost.AddRange(filteredPost); //Add to list for merge the filteredPost with other Post with different Articles Content
     }
 
-    //var newsroot = Umbraco.Content(1267);
-    //var blogArchive = newsroot.Children.First();
     var categories = Umbraco.TagQuery
                         .GetAllContentTags("ArticulateCategories")
                         .Select(x => x.Text)
                         .OrderBy(x => x);
+
+
     //var categoriesUrl = newsroot.Value<string>("categoriesUrlName");
     //var tagsUrl = newsroot.Value<string>("tagsUrlName");
 
@@ -54,128 +47,111 @@
     //                    .Take(6)
     //                    .ToList();
 
-    var filteredEntries = allPost.Where(x => x.Value<string>("categories") != null)
+    //var filteredEntries = allPost.Where(x => x.Value<string>("categories") != null)
+    //            .OrderByDescending(x => x.Value("publishedDate"))
+    //            .Take(12)
+    //            .ToList(); //filter all the post to recent published date
+    var filteredTrendingEntries = allPost.Where(x => x.Value<string>("categories") != null)
+                .Where(x => x.Value<string[]>("tags").InvariantContains("trending"))
                 .OrderByDescending(x => x.Value("publishedDate"))
-                .Take(6)
+                .Take(12)
                 .ToList(); //filter all the post to recent published date
 }
 
+<link rel="stylesheet" href="~/assets/css/custom-style.css">
+
 <title>OneGreatPlatform</title>
 
-<!-- Carosel -->
-<div class="main-banner header-text">
-    <div class="container-fluid">
-        <div class="owl-banner owl-carousel">
-            @foreach (var blogNode in filteredEntries)
-            {
-                var postDate = blogNode.Value<DateTime>("publishedDate").ToString("MMMM dd, yyyy");
-                var postCategory = blogNode.Value<string[]>("categories");
-                <div class="item">
-                    <img src="@blogNode.GetCropUrl("postImage", "square")" alt="">
-                    <div class="item-content">
-                        <div class="main-content">
-                            <div class="meta-category">
-                                <span><a href="@blogNode.Parent.Parent.Url">@blogNode.Parent.Parent.Name</a></span>
-                            </div>
-                            <a href="@blogNode.Url"><h4>@blogNode.Name</h4></a>
-                            <ul class="post-info">
-                                @*<li><a href="#">@blogNode.Value("author")</a></li>*@
-                                <li><a>@postDate</a></li>
-                                @*<li><a href="#">12 Comments</a></li>*@
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-</div>
-
 <!-- Page Content -->
-<section class="blog-posts">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="all-blog-posts">
+<div class="trending-post">
+    <div class="card">
+        <div class="card-body">
+            <h3>TRENDING</h3>
+            <section class="blog-posts grid-system" style="margin-top: 30px">
+                <div class="container">
                     <div class="row">
-                        @*<form action="/search/">
-                                <div class="col-lg-8">
-                                    <div class="form-outline">
-                                        <input type="text" name="Query" class="form-control" placeholder="type to search..." autocomplete="on" />
-                                        <input type="text" name="Category" class="form-control" placeholder="type to category..." autocomplete="on" />
-                                        <input type="text" name="Page" class="form-control" placeholder="type to page..." autocomplete="on" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="main-button">
-                                        <button>
-                                            Search
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>*@
-                        @if (filteredEntries == null || filteredEntries.Count() == 0)
-                        {
-                            <div class="md-margin-bottom-40 text-center">
-                                <h3 class="font-normal">No Recent News</h3>
-                            </div>
-                        }
-                        else
-                        {
-                            foreach (var blogNode in filteredEntries)
-                            {
-                                <style>
-                                    a {
-                                        color: #f48840;
+                        <div class="col-lg-12">
+                            <div class="all-blog-posts">
+                                <div class="row">
+                                    @*<form action="/search/">
+                                            <div class="col-lg-8">
+                                                <div class="form-outline">
+                                                    <input type="text" name="Query" class="form-control" placeholder="type to search..." autocomplete="on" />
+                                                    <input type="text" name="Category" class="form-control" placeholder="type to category..." autocomplete="on" />
+                                                    <input type="text" name="Page" class="form-control" placeholder="type to page..." autocomplete="on" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="main-button">
+                                                    <button>
+                                                        Search
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>*@
+                                    @if (filteredTrendingEntries == null || filteredTrendingEntries.Count() == 0)
+                                    {
+                                        <div class="md-margin-bottom-40 text-center">
+                                            <h3 class="font-normal">No Recent News</h3>
+                                        </div>
                                     }
-                                    /* CSS link color */
-                                </style>
-                                var tempExcerpt = blogNode.Value("excerpt").ToString();
-                                var postDate = blogNode.Value<DateTime>("publishedDate").ToString("MMMM dd, yyyy");
-                                const int MaxLength = 200;
-                                <div class="col-lg-12">
-                                    <div class="blog-post">
-                                        <div class="blog-thumb">
-                                            <a href="@blogNode.Url"><img src="@blogNode.GetCropUrl("postImage", "wide")" alt="@blogNode.Name"></a>
-                                        </div>
-                                        <div class="down-content">
-                                            <span><a href="@blogNode.Parent.Parent.Url">@blogNode.Parent.Parent.Name</a></span>
-                                            <a href="@blogNode.Url"><h4>@blogNode.Name</h4></a>
-                                            <ul class="post-info">
-                                                <li><a href="#">@blogNode.Value("author")</a></li>
-                                                <li><a>@postDate</a></li>
-                                                @*<li><a href="#">12 Comments</a></li>*@
-                                            </ul>
-                                            @if (tempExcerpt.Length > MaxLength)
-                                            {
-                                                tempExcerpt = tempExcerpt.Substring(0, MaxLength) + "...";
-                                            }
-                                            <ul>
-                                                @tempExcerpt
-                                            </ul>
-                                            @*<div class="post-options"> --temporary
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-tags"></i></li>
-                                                                <li><a href="#">Best Templates</a>,</li>
-                                                                <li><a href="#">TemplateMo</a></li>
-                                                            </ul>
-                                                        </div>
+                                    else
+                                    {
+                                        foreach (var blogNode in filteredTrendingEntries)
+                                        {
+                                            <style>
+                                                a {
+                                                    color: #f48840;
+                                                }
+
+                                                /* CSS link color */
+                                            </style>
+                                            var tempExcerpt = blogNode.Value("excerpt").ToString();
+                                            var postDate = blogNode.Value<DateTime>("publishedDate").ToString("MMMM dd, yyyy");
+                                            const int MaxLength = 200;
+                                            <div class="col-lg-4">
+                                                <div class="blog-post">
+                                                    <div class="blog-thumb">
+                                                        <a href="@blogNode.Url"><img src="@blogNode.GetCropUrl("postImage", "wide")" alt="@blogNode.Name"></a>
                                                     </div>
-                                                </div>*@
-                                        </div>
-                                    </div>
+                                                    <div class="down-content-trending">
+                                                        <span><a href="@blogNode.Parent.Parent.Url" style="padding-left: 20px;">@blogNode.Parent.Parent.Name</a></span>
+                                                        <a href="@blogNode.Url"><h4>@blogNode.Name</h4></a>
+                                                        <!--<ul class="post-info">
+                                                            <li><a href="#">@blogNode.Value("author")</a></li>
+                                                            <li><a>@postDate</a></li>-->
+                                                        @*<li><a href="#">12 Comments</a></li>*@
+                                                        <!--</ul>-->
+                                                        @*if (tempExcerpt.Length > MaxLength)
+                                                            {
+                                                                tempExcerpt = tempExcerpt.Substring(0, MaxLength) + "...";
+                                                            }
+                                                            <ul>
+                                                                tempExcerpt
+                                                            </ul>*@
+                                                        @*<div class="post-options"> --temporary
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <ul class="post-tags">
+                                                                            <li><i class="fa fa-tags"></i></li>
+                                                                            <li><a href="#">Best Templates</a>,</li>
+                                                                            <li><a href="#">TemplateMo</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    @*@{ Html.RenderAction("RenderSideBar", "HomePage"); }*@
                                 </div>
-                            }
-                        }
-                        @*@{ Html.RenderAction("RenderSideBar", "HomePage"); }*@
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="sidebar">
-                    <div class="row">
+                            </div>
+                        </div>
+                        <!--<div class="col-lg-4">
+                        <div class="sidebar">
+                            <div class="row">-->
                         @*<div class="col-lg-12">
                                 <div class="sidebar-item search">
                                     <form id="search_form" name="gs" method="GET" action="#">
@@ -183,14 +159,14 @@
                                     </form>
                                 </div>
                             </div>*@
-                        <div class="col-lg-12">
+                        <!--<div class="col-lg-12">
                             <div class="sidebar-item recent-posts" style="margin-top:0px">
                                 <div class="sidebar-heading">
                                     <h2>Recent Financial Posts</h2>
                                 </div>
                                 <div class="content">
                                     <ul>
-                                        @if (financePost == null || financePost.Count() == 0)
+                                        if (financePost == null || financePost.Count() == 0)
                                         {
                                             <li>
                                                 <h3 class="font-normal">No Recent News</h3>
@@ -202,9 +178,9 @@
                                             {
                                                 var postDate = post.Value<DateTime>("publishedDate").ToString("MMMM dd, yyyy");
                                                 <li>
-                                                    <a href="@post.Url">
-                                                        <h5>@post.Name</h5>
-                                                        <span>@postDate</span>
+                                                    <a href="post.Url">
+                                                        <h5>post.Name</h5>
+                                                        <span>postDate</span>
                                                     </a>
                                                 </li>
                                             }
@@ -212,49 +188,68 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                        @*<div class="col-lg-12">
-                                <div class="sidebar-item categories">
-                                    <div class="sidebar-heading">
-                                        <h2>Categories</h2>
-                                    </div>
-                                    <div class="content">
-                                        <ul>
-                                            <li><a href="#">- Nature Lifestyle</a></li>
-                                            <li><a href="#">- Awesome Layouts</a></li>
-                                            <li><a href="#">- Creative Ideas</a></li>
-                                            <li><a href="#">- Responsive Templates</a></li>
-                                            <li><a href="#">- HTML5 / CSS3 Templates</a></li>
-                                            <li><a href="#">- Creative &amp; Unique</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                        </div>-->
+                        <!--</div>
                             </div>
-                            <div class="col-lg-12">
-                                <div class="sidebar-item tags">
-                                    <div class="sidebar-heading">
-                                        <h2>Tag Clouds</h2>
-                                    </div>
-                                    <div class="content">
-                                        <ul>
-                                            <li><a href="#">Lifestyle</a></li>
-                                            <li><a href="#">Creative</a></li>
-                                            <li><a href="#">HTML5</a></li>
-                                            <li><a href="#">Inspiration</a></li>
-                                            <li><a href="#">Motivation</a></li>
-                                            <li><a href="#">PSD</a></li>
-                                            <li><a href="#">Responsive</a></li>
-                                        </ul>
+                        </div>-->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@foreach (var allArticulateRoot in Model.Children(c => c.ContentType.Alias == "Articulate")) //Get all Content with Articulate Document Type
+{
+    var blogArchives = allArticulateRoot.Children.First(); //Get the Articles Content within Articulate Document Type
+    var categoryEntries = blogArchives.Children(); //Get Child Item (Post) in Article Content
+
+    var filteredCategoryPost = categoryEntries
+        .Where(x => x.Value<string>("categories") != null && x.Parent.Parent.Name == allArticulateRoot.Name)
+        .OrderByDescending(x => x.Value("publishedDate"))
+        .Take(12)
+        .ToList(); //filter post to spesific categories
+
+    <div class="@($"category-post{num}")">
+        <div class="card">
+            <div class="card-body">
+                <h3>@allArticulateRoot.Name</h3>
+                <div class="main-banner header-text">
+                    <div class="container-fluid">
+                        <div class="owl-banner owl-carousel">
+                            @foreach (var blogNode in filteredCategoryPost)
+                            {
+                                var postDate = blogNode.Value<DateTime>("publishedDate").ToString("MMMM dd, yyyy");
+                                var postCategory = blogNode.Value<string[]>("categories");
+                                <div class="col-md-12">
+                                    <div class="blog-post">
+                                        <div class="blog-thumb">
+                                            <a href="@blogNode.Url"><img src="@blogNode.GetCropUrl("postImage", "wide")" alt="@blogNode.Name"></a>
+                                            @*<img src="@blogNode.GetCropUrl("postImage", "wide")" alt="">*@
+                                        </div>
+                                        <div class="@($"down-content-category{num}")">
+                                            <span><a href="@blogNode.Parent.Parent.Url">@blogNode.Parent.Parent.Name</a></span>
+                                            <a href="@blogNode.Url"><h4>@blogNode.Name</h4></a>
+                                            <!--<ul class="post-info">-->
+                                            @*<li><a href="#">@blogNode.Value("author")</a></li>*@
+                                            <!--<li><a>@postDate</a></li>-->
+                                            @*<li><a href="#">12 Comments</a></li>*@
+                                            <!--</ul>-->
+                                            @*</div>*@
+                                        </div>
                                     </div>
                                 </div>
-                            </div>*@
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-</section>
+    num = num >= 3 ? 1 : num + 1; //increase value for css index
+}
+
+
 
 
 

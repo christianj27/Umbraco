@@ -6,6 +6,9 @@ https://templatemo.com/tm-551-stand-blog
 
 */
 
+@import url('owl.css');
+@import url('owl.css');
+@import url('owl.css');
 body {
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
@@ -267,10 +270,9 @@ header .navbar {
 /* Banner Style */
 .main-banner .container-fluid {
 	padding: 0px 10px;
-	margin-bottom: -24px;
 }
 .owl-banner {
-	padding-top: 110px;
+	padding-top: 30px;
 }
 
 .owl-banner .item {
@@ -347,14 +349,15 @@ header .navbar {
 }
 
 .owl-banner .owl-nav button span {
-	color: #fff;
+	color: #444444;
 	font-size: 36px;
 	width: 60px;
 	height: 60px;
 	display: inline-block;
 	text-align: center;
 	line-height: 60px;
-	background-color: rgba(250,250,250,0.3);
+	background-color: #eee;
+	opacity: 0.3;
 }
 
 
@@ -403,6 +406,7 @@ header .navbar {
 
 .blog-posts .blog-post {
 	margin-bottom: 30px;
+	background-color: #ffffff;
 }
 
 .blog-posts .blog-thumb img {
@@ -414,7 +418,16 @@ header .navbar {
 	padding: 40px;
 	border-right: 1px solid #eee;
 	border-left: 1px solid #eee;
-	border-bottom: 1px solid #eee;
+	border-bottom: 4px solid #f48840;
+}
+
+.blog-posts .down-content-trending {
+	padding: 40px;
+	border-right: 1px solid #eee;
+	border-left: 1px solid #eee;
+	border-bottom: 4px solid #f48840;
+	padding: 20px; 
+	height:200px
 }
 
 .blog-posts .down-content span {
@@ -425,7 +438,28 @@ header .navbar {
 	color: #f48840;
 }
 
+.blog-posts .down-content-trending span {
+	font-size: 18px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	font-weight: 900;
+	color: #f48840;
+}
+
+.blog-posts .down-content-trending a {
+	color: #f48840;
+}
+
 .blog-posts .down-content h4 {
+	font-size: 24px;
+	text-transform: capitalize;
+	letter-spacing: 0.5px;
+	font-weight: 900;
+	color: #20232e;
+	margin: 10px 0px 12px 0px;
+}
+
+.blog-posts .down-content-trending h4 {
 	font-size: 24px;
 	text-transform: capitalize;
 	letter-spacing: 0.5px;
@@ -439,7 +473,18 @@ header .navbar {
 	margin-right: 8px;
 }
 
+.blog-posts .down-content-trending ul.post-info li {
+	display: inline-block;
+	margin-right: 8px;
+}
+
 .blog-posts .down-content ul.post-info li:after {
+	content: '|';
+	color: #aaa;
+	margin-left: 8px;
+}
+
+.blog-posts .down-content-trending ul.post-info li:after {
 	content: '|';
 	color: #aaa;
 	margin-left: 8px;
@@ -450,7 +495,16 @@ header .navbar {
 	letter-spacing: 0.25px;
 }
 
+.blog-posts .down-content-trending h4 {
+	font-size: 20px;
+	letter-spacing: 0.25px;
+}
+
 .grid-system .down-content ul.post-info li {
+	margin-right: 3px;
+}
+
+.grid-system .down-content-trending ul.post-info li {
 	margin-right: 3px;
 }
 
@@ -458,7 +512,14 @@ header .navbar {
 	margin-left: 5px;
 }
 
+.grid-system .down-content-trending ul.post-info li:after {
+	margin-left: 5px;
+}
+
 .blog-posts .down-content ul.post-info li:last-child::after {
+	display: none;
+}
+.blog-posts .down-content-trending ul.post-info li:last-child::after {
 	display: none;
 }
 
@@ -469,7 +530,18 @@ header .navbar {
 	transition: all .3s;
 }
 
+.blog-posts .down-content-trending ul.post-info li a {
+	font-size: 14px;
+	color: #aaa;
+	font-weight: 400;
+	transition: all .3s;
+}
+
 .blog-posts .down-content ul.post-info li a:hover {
+	color: #f48840;
+}
+
+.blog-posts .down-content-trending ul.post-info li a:hover {
 	color: #f48840;
 }
 
@@ -480,12 +552,28 @@ header .navbar {
 	border-bottom: 1px solid #eee;
 }
 
+.blog-posts .down-content-trending p {
+	padding: 25px 0px;
+	margin: 25px 0px;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+
 .blog-posts .down-content ul.post-share {
+	text-align: right;
+}
+
+.blog-posts .down-content-trending ul.post-share {
 	text-align: right;
 }
 
 .blog-posts .down-content ul.post-tags li,
 .blog-posts .down-content ul.post-share li {
+	display: inline-block;
+}
+
+.blog-posts .down-content-trending ul.post-tags li,
+.blog-posts .down-content-trending ul.post-share li {
 	display: inline-block;
 }
 
@@ -495,8 +583,19 @@ header .navbar {
 	margin-right: 5px;
 }
 
+.blog-posts .down-content-trending ul.post-tags li:first-child i,
+.blog-posts .down-content-trending ul.post-share li:first-child i {
+	color: #f48840;
+	margin-right: 5px;
+}
+
 .blog-posts .down-content ul.post-tags li,
 .blog-posts .down-content ul.post-share li {
+	color: #aaa;
+}
+
+.blog-posts .down-content-trending ul.post-tags li,
+.blog-posts .down-content-trending ul.post-share li {
 	color: #aaa;
 }
 
@@ -508,8 +607,21 @@ header .navbar {
 	transition: all .3s;
 }
 
+.blog-posts .down-content-trending ul.post-tags li a,
+.blog-posts .down-content-trending ul.post-share li a {
+	font-size: 14px;
+	color: #aaa;
+	font-weight: 400;
+	transition: all .3s;
+}
+
 .blog-posts .down-content ul.post-tags li a:hover,
 .blog-posts .down-content ul.post-share li a:hover {
+	color: #f48840;
+}
+
+.blog-posts .down-content-trending ul.post-tags li a:hover,
+.blog-posts .down-content-trending ul.post-share li a:hover {
 	color: #f48840;
 }
 

@@ -1,0 +1,248 @@
+﻿.trending-post .card {
+    margin: 0px 150px;
+    border: none;
+}
+
+.trending-post .card .card-body {
+    margin-top: 130px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-top: 5px solid #e5383b;
+    background-color: #ffe5d9;
+    box-shadow: 1px 1px 5px #888888
+}
+
+.trending-post .card .card-body h3 {
+    padding-left: 30px;
+    color: #e5383b;
+    font-family: 'Roboto', sans-serif;
+}
+
+.category-post1 .card {
+    margin: 0px 150px;
+    border: none;
+}
+
+.category-post1 .card .card-body {
+    margin-top: 50px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-top: 5px solid #6b9080;
+    background-color: #ece4db;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.category-post1 .card .card-body h3 {
+    padding-left: 30px;
+    color: #6b9080;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+}
+
+.category-post2 .card {
+    margin: 0px 150px;
+    border: none;
+}
+
+.category-post2 .card .card-body {
+    margin-top: 50px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-top: 5px solid #3a6ea5;
+    background-color: #e7e6f7;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.category-post2 .card .card-body h3 {
+    padding-left: 30px;
+    color: #3a6ea5;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+
+}
+
+.category-post3 .card {
+    margin: 0px 150px;
+    border: none;
+}
+
+.category-post3 .card .card-body {
+    margin-top: 50px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-top: 5px solid #40a73b;
+    background-color: #e9fae3;
+    box-shadow: 1px 1px 5px #888888
+}
+
+.category-post3 .card .card-body h3 {
+    padding-left: 30px;
+    color: #40a73b;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+
+}
+
+
+.down-content-category1 {
+    padding: 20px;
+    background-color: #fff;
+    height: 200px;
+    border-bottom: 4px solid #6b9080;
+}
+
+.down-content-category1 span {
+	font-size: 18px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	font-weight: 900;
+}
+
+.down-content-category1 a {
+    padding-left: 30px;
+    color: #6b9080;
+}
+
+
+.down-content-category1 h4 {
+	font-size: 20px;
+	text-transform: capitalize;
+	letter-spacing: 0.5px;
+	font-weight: 900;
+	color: #20232e;
+	margin: 10px 0px 12px 0px;
+}
+
+.down-content-category2 {
+    padding: 20px;
+    background-color: #fff;
+    height: 200px;
+    border-bottom: 4px solid #3a6ea5;
+}
+
+.down-content-category2 span {
+	font-size: 18px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	font-weight: 900;
+}
+
+.down-content-category2 a {
+    padding-left: 30px;
+    color: #3a6ea5;
+}
+
+
+.down-content-category2 h4 {
+	font-size: 20px;
+	text-transform: capitalize;
+	letter-spacing: 0.5px;
+	font-weight: 900;
+	color: #20232e;
+	margin: 10px 0px 12px 0px;
+}
+
+.down-content-category3 {
+    padding: 20px;
+    background-color: #fff;
+    height: 200px;
+    border-bottom: 4px solid #40a73b;
+}
+
+.down-content-category3 span {
+	font-size: 18px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	font-weight: 900;
+}
+
+.down-content-category3 a {
+    padding-left: 30px;
+    color: #40a73b;
+}
+
+
+.down-content-category3 h4 {
+	font-size: 20px;
+	text-transform: capitalize;
+	letter-spacing: 0.5px;
+	font-weight: 900;
+	color: #20232e;
+	margin: 10px 0px 12px 0px;
+}
+
+
+
+
+/* Responsive Style */
+@media (max-width: 1250px) {
+    .blog-posts .down-content-trending {
+        height: 300px;
+    }
+
+/*    .down-content-category1 {
+        height: 300px;
+    }
+
+    .down-content-category2 {
+        height: 300px;
+    }
+
+    .down-content-category3 {
+        height: 300px;
+    }
+*/}
+
+
+@media (max-width: 992px) {
+    .trending-post .card {
+        margin: 0px 30px;
+        border: none;
+    }
+
+    .blog-posts .down-content-trending {
+        height: 150px
+    }
+
+    .blog-posts .down-content-trending h4 {
+	    font-size: 15px;
+    }
+
+/*    .category-post1 .card {
+        margin: 0px 150px;
+        border: none;
+    }
+
+    .down-content-category1 {
+        height: 300px;
+    }
+
+    .down-content-category1 h4 {
+        font-size: 15px;
+    }
+
+
+    .category-post2 .card {
+        margin: 0px 150px;
+        border: none;
+    }
+
+    .down-content-category2 {
+        height: 300px;
+    }
+
+    .down-content-category2 h4 {
+        font-size: 15px;
+    }
+
+
+    .category-post3 .card {
+        margin: 0px 150px;
+        border: none;
+    }
+
+    .down-content-category3 {
+        height: 300px;
+    }
+
+    .down-content-category3 h4 {
+        font-size: 15px;
+    }
+*/
+}

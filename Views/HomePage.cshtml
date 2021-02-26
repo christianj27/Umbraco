@@ -8,28 +8,40 @@
     Layout = "WebBase.cshtml";
 
     int num = 1; //Index for css class
-    IEnumerable<IPublishedContent> entries = null;
-    var allPost = new List<IPublishedContent>();
+    HashSet<string> categories = new HashSet<string>(); //HashSet is for eliminate the redundant data
 
-    foreach (var allArticulateRoot in Model.Children(c => c.ContentType.Alias == "Articulate")) //Get all Content with Articulate Document Type
+    //IEnumerable<IPublishedContent> entries = null;
+    //var allPost = new List<IPublishedContent>();
+
+    //foreach (var allArticulateRoot in Model.Children(c => c.ContentType.Alias == "Articulate")) //Get all Content with Articulate Document Type
+    //{
+    //    var blogArchives = allArticulateRoot.Children.First(); //Get the Articles Content within Articulate Document Type
+    //    entries = blogArchives.Children(); //Get Child Item (Post) in Article Content
+
+    //var filteredPost = entries
+    //                    .Where(x => x.Value<string>("categories") != null)
+    //                    .OrderByDescending(x => x.Value("publishedDate"))
+    //                    .Take(12)
+    //                    .ToList(); //filter with recent publishedDate and categories not null
+
+        @*allPost.AddRange(entries); //Add to list for merge the filteredPost with other Post with different Articles Content
+    }*@
+
+    //var categories = Umbraco.TagQuery
+    //            .GetAllContentTags("ArticulateCategories")
+    //            .Select(x => x.Text)
+    //            .OrderBy(x => x);
+    var articulateRoot = Model.Children(c => c.ContentType.Alias == "Articulate").First();
+    var blogArticulate = articulateRoot.FirstChild().Children();
+
+    var categoriesUrl = articulateRoot.Value<string>("categoriesUrlName");
+    var tagsUrl = articulateRoot.Value<string>("tagsUrlName");
+
+    foreach(var allPost in blogArticulate)
     {
-        var blogArchives = allArticulateRoot.Children.First(); //Get the Articles Content within Articulate Document Type
-        entries = blogArchives.Children(); //Get Child Item (Post) in Article Content
-
-        var filteredPost = entries
-                            .Where(x => x.Value<string>("categories") != null)
-                            .OrderByDescending(x => x.Value("publishedDate"))
-                            .Take(6)
-                            .ToList(); //filter with recent publishedDate and categories not null
-
-        allPost.AddRange(filteredPost); //Add to list for merge the filteredPost with other Post with different Articles Content
+        var rawCategories = allPost.Value<string[]>("categories");
+        categories.Add(rawCategories[0]);
     }
-
-    var categories = Umbraco.TagQuery
-                        .GetAllContentTags("ArticulateCategories")
-                        .Select(x => x.Text)
-                        .OrderBy(x => x);
-
 
     //var categoriesUrl = newsroot.Value<string>("categoriesUrlName");
     //var tagsUrl = newsroot.Value<string>("tagsUrlName");
@@ -51,11 +63,11 @@
     //            .OrderByDescending(x => x.Value("publishedDate"))
     //            .Take(12)
     //            .ToList(); //filter all the post to recent published date
-    var filteredTrendingEntries = allPost.Where(x => x.Value<string>("categories") != null)
-                .Where(x => x.Value<string[]>("tags").InvariantContains("trending"))
-                .OrderByDescending(x => x.Value("publishedDate"))
-                .Take(12)
-                .ToList(); //filter all the post to recent published date
+    var filteredTrendingEntries = blogArticulate.Where(x => x.Value<string>("categories") != null)
+        .Where(x => x.Value<string[]>("tags").InvariantContains("trending"))
+        .OrderByDescending(x => x.Value("publishedDate"))
+        .Take(12)
+        .ToList(); //filter all the post to recent published date
 }
 
 <link rel="stylesheet" href="~/assets/css/custom-style.css">
@@ -108,6 +120,7 @@
                                             </style>
                                             var tempExcerpt = blogNode.Value("excerpt").ToString();
                                             var postDate = blogNode.Value<DateTime>("publishedDate").ToString("MMMM dd, yyyy");
+                                            var category = blogNode.Value<string[]>("categories");
                                             const int MaxLength = 200;
                                             <div class="col-lg-4">
                                                 <div class="blog-post">
@@ -115,7 +128,7 @@
                                                         <a href="@blogNode.Url"><img src="@blogNode.GetCropUrl("postImage", "wide")" alt="@blogNode.Name"></a>
                                                     </div>
                                                     <div class="down-content-trending">
-                                                        <span><a href="@blogNode.Parent.Parent.Url" style="padding-left: 20px;">@blogNode.Parent.Parent.Name</a></span>
+                                                        <span><a href="@($"{blogNode.Parent.Parent.Url}{categoriesUrl}/{category[0]}")" style="padding-left: 20px;">@category[0]</a></span>
                                                         <a href="@blogNode.Url"><h4>@blogNode.Name</h4></a>
                                                         <!--<ul class="post-info">
                                                             <li><a href="#">@blogNode.Value("author")</a></li>
@@ -199,13 +212,13 @@
     </div>
 </div>
 
-@foreach (var allArticulateRoot in Model.Children(c => c.ContentType.Alias == "Articulate")) //Get all Content with Articulate Document Type
+@foreach (var category in categories) //Get all Content with Articulate Document Type
 {
-    var blogArchives = allArticulateRoot.Children.First(); //Get the Articles Content within Articulate Document Type
-    var categoryEntries = blogArchives.Children(); //Get Child Item (Post) in Article Content
+    //var blogArchives = allArticulateRoot.Children.First(); //Get the Articles Content within Articulate Document Type
+    //var categoryEntries = blogArchives.Children(); //Get Child Item (Post) in Article Content
 
-    var filteredCategoryPost = categoryEntries
-        .Where(x => x.Value<string>("categories") != null && x.Parent.Parent.Name == allArticulateRoot.Name)
+    var filteredCategoryPost = blogArticulate
+        .Where(x => x.Value<string[]>("categories") != null && x.Value<string[]>("categories").InvariantContains(category))
         .OrderByDescending(x => x.Value("publishedDate"))
         .Take(12)
         .ToList(); //filter post to spesific categories
@@ -213,14 +226,14 @@
     <div class="@($"category-post{num}")">
         <div class="card">
             <div class="card-body">
-                <h3>@allArticulateRoot.Name</h3>
+                <h3>@category</h3>
                 <div class="main-banner header-text">
                     <div class="container-fluid">
                         <div class="owl-banner owl-carousel">
                             @foreach (var blogNode in filteredCategoryPost)
                             {
-                                var postDate = blogNode.Value<DateTime>("publishedDate").ToString("MMMM dd, yyyy");
-                                var postCategory = blogNode.Value<string[]>("categories");
+                                //var postDate = blogNode.Value<DateTime>("publishedDate").ToString("MMMM dd, yyyy");
+                                //var postCategory = blogNode.Value<string[]>("categories");
                                 <div class="col-md-12">
                                     <div class="blog-post">
                                         <div class="blog-thumb">
@@ -228,11 +241,11 @@
                                             @*<img src="@blogNode.GetCropUrl("postImage", "wide")" alt="">*@
                                         </div>
                                         <div class="@($"down-content-category{num}")">
-                                            <span><a href="@blogNode.Parent.Parent.Url">@blogNode.Parent.Parent.Name</a></span>
+                                            <span><a href="@($"{blogNode.Parent.Parent.Url}{categoriesUrl}/{category[0]}")">@category</a></span>
                                             <a href="@blogNode.Url"><h4>@blogNode.Name</h4></a>
                                             <!--<ul class="post-info">-->
                                             @*<li><a href="#">@blogNode.Value("author")</a></li>*@
-                                            <!--<li><a>@postDate</a></li>-->
+                                            <!--<li><a>postDate</a></li>-->
                                             @*<li><a href="#">12 Comments</a></li>*@
                                             <!--</ul>-->
                                             @*</div>*@
